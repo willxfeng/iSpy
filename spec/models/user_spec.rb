@@ -7,8 +7,10 @@ describe User do
   it { should have_valid(:last_name).when("Smith", "Kelly") }
   it { should_not have_valid(:last_name).when(nil, "") }
 
-  it { should have_valid(:email).when('user@example.com',
-    'another@gmail.com') }
+  it do
+    should have_valid(:email).when('user@example.com', 'another@gmail.com')
+  end
+
   it { should_not have_valid(:email).when(nil, "", "urser", "users@com") }
 
   it "has a matching password confirmation for the password" do
