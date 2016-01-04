@@ -1,6 +1,6 @@
 require 'rails_helper'
 feature "User adds street art" do
-  scenario "user visits new art page"  do
+  scenario "user visits new art page" do
     visit "/arts/new"
 
     expect(page).to have_content "Name:"
