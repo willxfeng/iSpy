@@ -1,0 +1,10 @@
+<h1><%= @art.name %></h1>
+
+<ul>
+  <li><%= @art.location %></li>
+  <li><%= @art.description %></li>
+  <% unless @art.artist.empty? %>
+  <li> <%= @art.artist %></li>
+  <% end %>
+  <li><%= @art.category %></li>
+</ul>
