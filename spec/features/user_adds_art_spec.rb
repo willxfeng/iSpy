@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 feature "User adds street art" do
   scenario "user visits new art page"  do
     visit "/arts/new"
@@ -16,14 +15,16 @@ feature "User adds street art" do
 
     fill_in "art_name", with: "Chinatown Community Mural"
     fill_in "art_location", with: "Surface Rd & Beach St"
-    fill_in "art_description", with: "Chinese community mural commissioned by the mayor's mural crew."
+    fill_in "art_description", with: "Chinese community mural commissioned
+    by the mayor's mural crew."
     fill_in "art_artist", with: "Unknown"
     fill_in "art_category", with: "mural"
     click_on "Add"
 
     expect(page).to have_content "Chinatown Community Mural"
     expect(page).to have_content "Surface Rd & Beach St"
-    expect(page).to have_content "Chinese community mural commissioned by the mayor's mural crew."
+    expect(page).to have_content "Chinese community mural commissioned by
+    the mayor's mural crew."
     expect(page).to have_content "Unknown"
   end
 

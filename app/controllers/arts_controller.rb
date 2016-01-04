@@ -1,5 +1,4 @@
 class ArtsController < ApplicationController
-
   def new
     @art = Art.new
   end
@@ -19,8 +18,9 @@ class ArtsController < ApplicationController
   end
 
   private
-  def art_params
-    params.require(:art).permit(:name, :location, :description, :category, :artist)
-  end
 
+  def art_params
+    params.require(:art).permit(:name, :location, :description, :category,
+    :artist)
+  end
 end
