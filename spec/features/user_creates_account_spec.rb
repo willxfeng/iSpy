@@ -3,10 +3,12 @@ require 'rails_helper'
 feature 'user can create an account' do
 
   before :each do
-    visit new_user_registration_path
+    visit root_path
+    click_link "Sign Up Here!"
   end
 
   scenario "user specifies valid and required info" do
+
     fill_in "First Name", with: "Jon"
     fill_in "Last Name", with: "Smith"
     fill_in "Email", with: "user@example.com"
@@ -29,7 +31,7 @@ feature 'user can create an account' do
   end
 
   scenario "password confirmation does not match confirmation" do
-  
+
     fill_in "First Name", with: "Jon"
     fill_in "Last Name", with: "Smith"
     fill_in "Email", with: "user@example.com"
