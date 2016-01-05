@@ -2428,3 +2428,417 @@ Completed 200 OK in 18ms (Views: 14.4ms | ActiveRecord: 1.3ms)
   [1m[35m (0.3ms)[0m  ROLLBACK
   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
   [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.6ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (5.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'person1@example.com' LIMIT 1
+  [1m[36mSQL (9.2ms)[0m  [1mINSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "person1@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$b7ubyuikpMZNAq4KRWjrkukeYh7xNxu9QeVSnH.xlwhzQnIac84AK"], ["created_at", "2016-01-05 17:54:47.503653"], ["updated_at", "2016-01-05 17:54:47.503653"]]
+  [1m[35m (0.9ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:54:47 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (19.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (84.5ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 673ms (Views: 643.1ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:54:48 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person1@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "person1@example.com"]]
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2016-01-05 17:54:48.287200"], ["current_sign_in_at", "2016-01-05 17:54:48.287200"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2016-01-05 17:54:48.288828"], ["id", 53]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 60ms (ActiveRecord: 2.2ms)
+Started GET "/" for 127.0.0.1 at 2016-01-05 12:54:48 -0500
+  [1m[36m (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:54:48 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (5.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.6ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 17ms (Views: 15.5ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:54:48 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"abc@xyz.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "abc@xyz.com"]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.7ms)
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"abc@xyz.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendered devise/shared/_links.html.erb (6.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.0ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 21ms (Views: 17.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'person2@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["email", "person2@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$SJJMHEaz/zkzIm9mx.JeLu5Xf7SHlNs3gBMJ6SOo8z7zQs0T1LJTW"], ["created_at", "2016-01-05 17:54:48.405845"], ["updated_at", "2016-01-05 17:54:48.405845"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:54:48 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.0ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:54:48 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person2@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "person2@example.com"]]
+Completed 401 Unauthorized in 8ms (ActiveRecord: 1.0ms)
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person2@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendered devise/shared/_links.html.erb (9.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (19.4ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 27ms (Views: 23.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (1.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.8ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'person3@example.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "person3@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$x.EvTDU3Tk8.nLjY0wwipeQsf/7w1VR/Z57yQWDeBL1uyRTGp3We."], ["created_at", "2016-01-05 17:54:48.503764"], ["updated_at", "2016-01-05 17:54:48.503764"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:54:48 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (8.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.4ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 20ms (Views: 18.6ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:54:48 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person3@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "person3@example.com"]]
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2016-01-05 17:54:48.545346"], ["current_sign_in_at", "2016-01-05 17:54:48.545346"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2016-01-05 17:54:48.546773"], ["id", 55]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 13ms (ActiveRecord: 2.5ms)
+Started GET "/" for 127.0.0.1 at 2016-01-05 12:54:48 -0500
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (2.6ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'person1@example.com' LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "person1@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$3/Gr5e0liWUBs2.VJmB.wuar1VDAV3bFNkZwGp3MjJx.Xm6h78ty2"], ["created_at", "2016-01-05 17:55:33.931135"], ["updated_at", "2016-01-05 17:55:33.931135"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:33 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (25.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (510.7ms)
+  Rendered layouts/_nav.html.erb (1.7ms)
+Completed 200 OK in 968ms (Views: 938.2ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:34 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person1@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (5.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "person1@example.com"]]
+  [1m[35m (1.6ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2016-01-05 17:55:35.017582"], ["current_sign_in_at", "2016-01-05 17:55:35.017582"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2016-01-05 17:55:35.020482"], ["id", 56]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/users/edit
+Completed 302 Found in 70ms (ActiveRecord: 8.0ms)
+Started GET "/users/edit" for 127.0.0.1 at 2016-01-05 12:55:35 -0500
+Processing by RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 56]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (19.4ms)
+  Rendered layouts/_nav.html.erb (0.1ms)
+Completed 200 OK in 54ms (Views: 49.7ms | ActiveRecord: 0.6ms)
+  [1m[35m (1.6ms)[0m  ROLLBACK
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:35 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (9.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (23.1ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 36ms (Views: 34.2ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:35 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"abc@xyz.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "abc@xyz.com"]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.9ms)
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"abc@xyz.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendered devise/shared/_links.html.erb (9.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.5ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 25ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (1.7ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.7ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'person2@example.com' LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "person2@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$xV3TZmERnf2K6nOvXQj69.TQdGYUugQCrNzJYzKRNyKbV/KNNvSBC"], ["created_at", "2016-01-05 17:55:35.267696"], ["updated_at", "2016-01-05 17:55:35.267696"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:35 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (8.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.8ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 27ms (Views: 23.9ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:35 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person2@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "person2@example.com"]]
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.8ms)
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person2@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendered devise/shared/_links.html.erb (7.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.2ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 22ms (Views: 18.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (1.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.8ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (6.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'person3@example.com' LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["email", "person3@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$BCISPenUWJldlE72EGkrQeQkx9V1SmtZPknu./H01Ag.oiNYl9uau"], ["created_at", "2016-01-05 17:55:35.371792"], ["updated_at", "2016-01-05 17:55:35.371792"]]
+  [1m[36m (0.9ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:35 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (16.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (30.7ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 36ms (Views: 34.3ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:35 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person3@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "person3@example.com"]]
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2016-01-05 17:55:35.431148"], ["current_sign_in_at", "2016-01-05 17:55:35.431148"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2016-01-05 17:55:35.432771"], ["id", 58]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/users/edit
+Completed 302 Found in 14ms (ActiveRecord: 2.0ms)
+Started GET "/users/edit" for 127.0.0.1 at 2016-01-05 12:55:35 -0500
+Processing by RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 58]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (13.5ms)
+  Rendered layouts/_nav.html.erb (0.1ms)
+Completed 200 OK in 19ms (Views: 16.2ms | ActiveRecord: 0.8ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:35 -0500
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 58]]
+Redirected to http://www.example.com/users/edit
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+Started GET "/users/edit" for 127.0.0.1 at 2016-01-05 12:55:35 -0500
+Processing by RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 58]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (9.8ms)
+  Rendered layouts/_nav.html.erb (0.1ms)
+Completed 200 OK in 15ms (Views: 12.5ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (1.6ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (3.9ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'person1@example.com' LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "person1@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$vp5AQg8HTBdSCojlCmLvC.DvZOZPih5cdaC8cBd0IbByDE/8y2LfW"], ["created_at", "2016-01-05 17:55:47.333109"], ["updated_at", "2016-01-05 17:55:47.333109"]]
+  [1m[35m (0.4ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:47 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (13.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (88.3ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 629ms (Views: 574.2ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:48 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person1@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "person1@example.com"]]
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (12.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2016-01-05 17:55:48.172383"], ["current_sign_in_at", "2016-01-05 17:55:48.172383"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2016-01-05 17:55:48.173744"], ["id", 59]]
+  [1m[35m (0.4ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/users/edit
+Completed 302 Found in 128ms (ActiveRecord: 13.8ms)
+Started GET "/users/edit" for 127.0.0.1 at 2016-01-05 12:55:48 -0500
+Processing by RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 59]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (53.7ms)
+  Rendered layouts/_nav.html.erb (0.1ms)
+Completed 200 OK in 128ms (Views: 124.0ms | ActiveRecord: 0.6ms)
+  [1m[35m (3.5ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:48 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (13.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (30.6ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 35ms (Views: 33.9ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:48 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"abc@xyz.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "abc@xyz.com"]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.9ms)
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"abc@xyz.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendered devise/shared/_links.html.erb (12.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (38.8ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 47ms (Views: 41.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'person2@example.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "person2@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$ICm7VR.ALODxrCLbudBxweUOnGQHwfApB113ohe3I39pdPaiPLUpO"], ["created_at", "2016-01-05 17:55:48.717315"], ["updated_at", "2016-01-05 17:55:48.717315"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:48 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (14.5ms)
+  Rendered layouts/_nav.html.erb (0.7ms)
+Completed 200 OK in 22ms (Views: 20.9ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:48 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person2@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "person2@example.com"]]
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.8ms)
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person2@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendered devise/shared/_links.html.erb (12.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (26.1ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 33ms (Views: 29.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'person3@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["email", "person3@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$wDaoqnaSNqoNP7t1lZnKYOUcv7zrrh6xBrhoseDPHiEEreh5wyV.K"], ["created_at", "2016-01-05 17:55:48.824061"], ["updated_at", "2016-01-05 17:55:48.824061"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:48 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (30.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (42.7ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 48ms (Views: 47.0ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:48 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person3@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "person3@example.com"]]
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2016-01-05 17:55:48.899665"], ["current_sign_in_at", "2016-01-05 17:55:48.899665"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2016-01-05 17:55:48.901099"], ["id", 61]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/users/edit
+Completed 302 Found in 19ms (ActiveRecord: 2.0ms)
+Started GET "/users/edit" for 127.0.0.1 at 2016-01-05 12:55:48 -0500
+Processing by RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 61]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (38.7ms)
+  Rendered layouts/_nav.html.erb (0.1ms)
+Completed 200 OK in 45ms (Views: 42.2ms | ActiveRecord: 0.7ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:55:48 -0500
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 61]]
+Redirected to http://www.example.com/users/edit
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+Started GET "/users/edit" for 127.0.0.1 at 2016-01-05 12:55:48 -0500
+Processing by RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 61]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (13.3ms)
+  Rendered layouts/_nav.html.erb (0.1ms)
+Completed 200 OK in 24ms (Views: 17.8ms | ActiveRecord: 0.8ms)
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (2.5ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'person1@example.com' LIMIT 1
+  [1m[36mSQL (6.4ms)[0m  [1mINSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "person1@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$7nCqLxGIDFpe6eb8mXp9ZusIWw5jMlULVfeCObqYYR3hCKnMn9WiS"], ["created_at", "2016-01-05 17:56:32.887970"], ["updated_at", "2016-01-05 17:56:32.887970"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:56:32 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (11.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (71.0ms)
+  Rendered layouts/_nav.html.erb (1.8ms)
+Completed 200 OK in 493ms (Views: 464.1ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:56:33 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person1@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "person1@example.com"]]
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2016-01-05 17:56:33.478943"], ["current_sign_in_at", "2016-01-05 17:56:33.478943"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2016-01-05 17:56:33.480300"], ["id", 62]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/users/edit
+Completed 302 Found in 56ms (ActiveRecord: 2.1ms)
+Started GET "/users/edit" for 127.0.0.1 at 2016-01-05 12:56:33 -0500
+Processing by RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 62]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (14.3ms)
+  Rendered layouts/_nav.html.erb (0.1ms)
+Completed 200 OK in 47ms (Views: 43.5ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.6ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:56:33 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (5.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.4ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 16ms (Views: 14.3ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:56:33 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"abc@xyz.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "abc@xyz.com"]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.8ms)
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"abc@xyz.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendered devise/shared/_links.html.erb (6.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.9ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 20ms (Views: 16.5ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'person2@example.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "person2@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$TKoLyg5/2Xgegr.EidHoreZ.f.M4SdQP0Z91U1ZD/4O3H.WF8yYAq"], ["created_at", "2016-01-05 17:56:33.663246"], ["updated_at", "2016-01-05 17:56:33.663246"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:56:33 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (5.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.7ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 16ms (Views: 14.6ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:56:33 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person2@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "person2@example.com"]]
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.8ms)
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person2@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendered devise/shared/_links.html.erb (5.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.5ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 22ms (Views: 18.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'person3@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["email", "person3@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$PRnwugkyBp98CQqftw7Di.P0Yv3DHc9yn7zKwb1DSv9k6LRpmR71e"], ["created_at", "2016-01-05 17:56:33.737732"], ["updated_at", "2016-01-05 17:56:33.737732"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:56:33 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (5.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.0ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:56:33 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person3@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "person3@example.com"]]
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2016-01-05 17:56:33.774873"], ["current_sign_in_at", "2016-01-05 17:56:33.774873"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2016-01-05 17:56:33.776241"], ["id", 64]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/users/edit
+Completed 302 Found in 13ms (ActiveRecord: 2.0ms)
+Started GET "/users/edit" for 127.0.0.1 at 2016-01-05 12:56:33 -0500
+Processing by RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 64]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (10.1ms)
+  Rendered layouts/_nav.html.erb (0.1ms)
+Completed 200 OK in 15ms (Views: 12.8ms | ActiveRecord: 0.7ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 12:56:33 -0500
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 64]]
+Redirected to http://www.example.com/users/edit
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 1.4ms)
+Started GET "/users/edit" for 127.0.0.1 at 2016-01-05 12:56:33 -0500
+Processing by RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 64]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (11.4ms)
+  Rendered layouts/_nav.html.erb (0.1ms)
+Completed 200 OK in 18ms (Views: 14.5ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m

@@ -46,7 +46,8 @@ feature 'user signs in' do
     expect(page).to_not have_content('Sign in')
 
     visit new_user_session_path
-
+    
+    expect(page).to have_content('You are already signed in.')
     expect(page).to_not have_content('Sign in')
   end
 end
