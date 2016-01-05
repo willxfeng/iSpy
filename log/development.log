@@ -4466,3 +4466,300 @@ AbstractController::ActionNotFound (The action 'index' could not be found for Ar
   Rendered /Users/lilybarrett/.gem/ruby/2.2.3/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
   Rendered /Users/lilybarrett/.gem/ruby/2.2.3/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
   Rendered /Users/lilybarrett/.gem/ruby/2.2.3/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (303.3ms)
+
+
+Started GET "/" for ::1 at 2016-01-05 14:29:39 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArtsController#index as HTML
+  [1m[35mArt Load (1.2ms)[0m  SELECT "arts".* FROM "arts"  ORDER BY id ASC
+  Rendered arts/index.html.erb within layouts/application (25.8ms)
+  Rendered layouts/_nav.html.erb (6.0ms)
+Completed 200 OK in 409ms (Views: 383.1ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/" for ::1 at 2016-01-05 14:29:39 -0500
+Processing by ArtsController#index as HTML
+  [1m[36mArt Load (0.5ms)[0m  [1mSELECT "arts".* FROM "arts"  ORDER BY id ASC[0m
+  Rendered arts/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 18ms (Views: 17.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2016-01-05 14:29:44 -0500
+Processing by ArtsController#index as HTML
+  [1m[35mArt Load (0.4ms)[0m  SELECT "arts".* FROM "arts"  ORDER BY id ASC
+  Rendered arts/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/arts/2" for ::1 at 2016-01-05 14:29:47 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArt Load (0.6ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered arts/show.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_nav.html.erb (0.7ms)
+Completed 200 OK in 57ms (Views: 30.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/arts/4" for ::1 at 2016-01-05 14:29:50 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mArt Load (0.3ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered arts/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 17ms (Views: 15.9ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/arts/4" for ::1 at 2016-01-05 14:29:52 -0500
+Processing by ArtsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"3VsJwD5Fgiv2HhfoQYrhAUVIOJDmGHHyX23dzvC0DKu8Bia60QalZRn0mwAdOE2LtvPUv0ocSZb+uYNsQbiptQ==", "id"=>"4"}
+  [1m[36mArt Load (0.3ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "arts" WHERE "arts"."id" = $1[0m  [["id", 4]]
+  [1m[35m (2.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/arts
+Completed 302 Found in 6ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/arts" for ::1 at 2016-01-05 14:29:52 -0500
+Processing by ArtsController#index as HTML
+  [1m[36mArt Load (0.5ms)[0m  [1mSELECT "arts".* FROM "arts"  ORDER BY id ASC[0m
+  Rendered arts/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 16ms (Views: 15.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/arts/6" for ::1 at 2016-01-05 14:29:56 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mArt Load (0.3ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 6]]
+  Rendered arts/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 19ms (Views: 17.6ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/arts/6" for ::1 at 2016-01-05 14:29:57 -0500
+Processing by ArtsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"CIecUddJAUuBpohfZNmOjhsuDKAF6xke6yhzplI5XbZp2rMrOAomBW5MBLc4ayIE6JXgj6nvIXpK/C0E4zX4qA==", "id"=>"6"}
+  [1m[36mArt Load (0.4ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "arts" WHERE "arts"."id" = $1[0m  [["id", 6]]
+  [1m[35m (2.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/arts
+Completed 302 Found in 5ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/arts" for ::1 at 2016-01-05 14:29:57 -0500
+Processing by ArtsController#index as HTML
+  [1m[36mArt Load (0.4ms)[0m  [1mSELECT "arts".* FROM "arts"  ORDER BY id ASC[0m
+  Rendered arts/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_nav.html.erb (0.8ms)
+Completed 200 OK in 46ms (Views: 45.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/arts/1" for ::1 at 2016-01-05 14:30:01 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mArt Load (0.3ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered arts/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 19ms (Views: 18.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/arts/1/edit" for ::1 at 2016-01-05 14:30:02 -0500
+Processing by ArtsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArt Load (0.2ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered arts/edit.html.erb within layouts/application (77.6ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 100ms (Views: 99.0ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/arts/1" for ::1 at 2016-01-05 14:30:11 -0500
+Processing by ArtsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"P5uIOa2OVoX8qJfNGCYiHkS0jryd7uWvTWV3XLTW8WRexqdDQs1xyxNCGyVElI6Utw9ikzHq3cvssSn+BdpUeg==", "art"=>{"name"=>"A Wonderful Mural", "artist"=>"Michelangelo", "location"=>"Boston, MA", "category"=>"Mural", "description"=>"A very sad portrait"}, "commit"=>"Update", "id"=>"1"}
+  [1m[35mArt Load (0.3ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "arts" SET "name" = $1 WHERE "arts"."id" = $2  [["name", "A Wonderful Mural"], ["id", 1]]
+  [1m[36m (2.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/arts/1
+Completed 302 Found in 9ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/arts/1" for ::1 at 2016-01-05 14:30:11 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mArt Load (0.3ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered arts/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 18ms (Views: 17.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/arts" for ::1 at 2016-01-05 14:30:12 -0500
+Processing by ArtsController#index as HTML
+  [1m[36mArt Load (0.4ms)[0m  [1mSELECT "arts".* FROM "arts"  ORDER BY id ASC[0m
+  Rendered arts/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 18ms (Views: 17.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/arts/2" for ::1 at 2016-01-05 14:30:13 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mArt Load (0.2ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered arts/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/arts/2/edit" for ::1 at 2016-01-05 14:30:16 -0500
+Processing by ArtsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArt Load (0.3ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered arts/edit.html.erb within layouts/application (3.2ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 30ms (Views: 29.1ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/arts/2" for ::1 at 2016-01-05 14:30:23 -0500
+Processing by ArtsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+uwOkCvOQ1v4wnFcNfDLuFTfPEsmaoNhwzbSbHuXfbubsSHqxI1kFRco/bRpQmcyp2TQZIpuuwVi4ozOypvYpQ==", "art"=>{"name"=>"Testing This Out", "artist"=>"Michelangelo", "location"=>"Boston, MA", "category"=>"Mural", "description"=>"A very sad portrait"}, "commit"=>"Update", "id"=>"2"}
+  [1m[35mArt Load (0.2ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "arts" SET "name" = $1 WHERE "arts"."id" = $2  [["name", "Testing This Out"], ["id", 2]]
+  [1m[36m (2.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/arts/2
+Completed 302 Found in 6ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/arts/2" for ::1 at 2016-01-05 14:30:23 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mArt Load (0.2ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered arts/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 19ms (Views: 17.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/arts" for ::1 at 2016-01-05 14:30:26 -0500
+Processing by ArtsController#index as HTML
+  [1m[36mArt Load (0.5ms)[0m  [1mSELECT "arts".* FROM "arts"  ORDER BY id ASC[0m
+  Rendered arts/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 22ms (Views: 20.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/arts/5" for ::1 at 2016-01-05 14:30:28 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mArt Load (0.2ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered arts/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 23ms (Views: 21.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/arts" for ::1 at 2016-01-05 14:30:30 -0500
+Processing by ArtsController#index as HTML
+  [1m[36mArt Load (0.5ms)[0m  [1mSELECT "arts".* FROM "arts"  ORDER BY id ASC[0m
+  Rendered arts/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 20ms (Views: 19.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/arts/1" for ::1 at 2016-01-05 14:38:49 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mArt Load (0.9ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered arts/show.html.erb within layouts/application (5.5ms)
+  Rendered layouts/_nav.html.erb (6.4ms)
+Completed 200 OK in 417ms (Views: 357.7ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/arts/1" for ::1 at 2016-01-05 14:38:50 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArt Load (0.4ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered arts/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 17ms (Views: 15.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/arts" for ::1 at 2016-01-05 14:38:55 -0500
+Processing by ArtsController#index as HTML
+  [1m[35mArt Load (0.7ms)[0m  SELECT "arts".* FROM "arts"  ORDER BY id ASC
+  Rendered arts/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 17ms (Views: 15.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/arts/3" for ::1 at 2016-01-05 14:38:57 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArt Load (0.3ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered arts/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/arts/3" for ::1 at 2016-01-05 14:38:58 -0500
+Processing by ArtsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"WX/KR2Pp5X4qU1NCrka76Bi5lsZIbfpC4u85Y0aiBkE4IuU9jKrCMMW536ry9Bdi6wJ66eRpwiZDO2fB966jXw==", "id"=>"3"}
+  [1m[35mArt Load (0.3ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "arts" WHERE "arts"."id" = $1  [["id", 3]]
+  [1m[36m (4.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/arts
+Completed 302 Found in 9ms (ActiveRecord: 5.8ms)
+
+
+Started GET "/arts" for ::1 at 2016-01-05 14:38:58 -0500
+Processing by ArtsController#index as HTML
+  [1m[35mArt Load (0.4ms)[0m  SELECT "arts".* FROM "arts"  ORDER BY id ASC
+  Rendered arts/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 20ms (Views: 19.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/arts/5" for ::1 at 2016-01-05 14:38:59 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mArt Load (0.4ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  Rendered arts/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 17ms (Views: 15.4ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/arts/5" for ::1 at 2016-01-05 14:39:01 -0500
+Processing by ArtsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"CxtNGINHk1u01n7YEMkGNSciqwvmIzfvCYByikmPxPlqRmJibAS0FVs88jBMe6q/1JlHJEonD4uoVCwo+INh5w==", "id"=>"5"}
+  [1m[35mArt Load (0.3ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "arts" WHERE "arts"."id" = $1  [["id", 5]]
+  [1m[36m (2.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/arts
+Completed 302 Found in 5ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/arts" for ::1 at 2016-01-05 14:39:01 -0500
+Processing by ArtsController#index as HTML
+  [1m[35mArt Load (0.4ms)[0m  SELECT "arts".* FROM "arts"  ORDER BY id ASC
+  Rendered arts/index.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 15ms (Views: 14.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/arts/new" for ::1 at 2016-01-05 14:39:08 -0500
+Processing by ArtsController#new as HTML
+  Rendered arts/new.html.erb within layouts/application (19.5ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 67ms (Views: 66.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/arts" for ::1 at 2016-01-05 14:39:09 -0500
+Processing by ArtsController#index as HTML
+  [1m[36mArt Load (0.4ms)[0m  [1mSELECT "arts".* FROM "arts"  ORDER BY id ASC[0m
+  Rendered arts/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.4ms)

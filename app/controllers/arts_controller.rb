@@ -35,6 +35,15 @@ class ArtsController < ApplicationController
     end
   end
 
+  def destroy
+    @arts = Art.all.order("id ASC")
+    @art = Art.find(params[:id])
+    @art.destroy
+
+    redirect_to arts_path
+  end
+
+
   private
 
   def art_params
