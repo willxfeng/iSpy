@@ -1,4 +1,6 @@
 require 'valid_attribute'
+require 'factory_girl_rails'
+require_relative 'support/factories'
 
 require 'coveralls'
 Coveralls.wear!('rails')
