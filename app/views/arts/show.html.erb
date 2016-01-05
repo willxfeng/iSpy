@@ -3,7 +3,7 @@
 <ul>
   <li><%= @art.location %></li>
   <li><%= @art.description %></li>
-  <% unless @art.artist.empty? %>
+  <% if @art.artist.present? %>
   <li> <%= @art.artist %></li>
   <% end %>
   <li><%= @art.category %></li>
