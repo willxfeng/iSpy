@@ -1,0 +1,9 @@
+<h1>Welcome to iSpy</h1>
+
+<ol>
+<% @arts.each do |art| %>
+  <li><%= link_to "#{art.name}", art %> </li>
+<% end %>
+</ol>
+
+<%= link_to "Add New Street Art", new_art_path %>
