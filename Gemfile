@@ -43,7 +43,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'factory_girl'
+  gem 'factory_girl_rails', '~> 4.2'
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
 end
@@ -54,8 +54,4 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-end
-
-group :test do
-  gem 'coveralls', require: false
 end

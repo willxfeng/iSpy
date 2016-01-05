@@ -1,29 +1,52 @@
 require 'rails_helper'
 
 feature 'user signs in' do
-  let(:user) { User.create(first_name: 'Will',
-    last_name: 'Feng',
-    email: 'willxfeng@gmail.com',
-    password: 'password') }
-
   scenario "an existing user specifies valid email and password" do
+    user = FactoryGirl.create(:user)
     visit new_user_session_path
-    click_link 'Sign in'
-    fill_in 'Email', with: 'willxfeng@gmail.com'
-    fill_in 'Password', with: 'password'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
 
-    expect(page).to have_content("Welcome!")
+    click_button 'Sign In'
+    expect(page).to have_content("Welcome Back!")
+    expect(page).to have_content('Sign Out')
   end
 
   scenario "user supplies nonexistent email and password" do
+    visit new_user_session_path
+    fill_in 'Email', with: 'abc@xyz.com'
+    fill_in 'Password', with: "plasshhwordd"
+    click_button 'Sign In'
 
+    expect(page).to have_content('Invalid email or password.')
+    expect(page).to have_content('Sign Up Here!')
+    expect(page).to_not have_content("Welcome Back!")
   end
 
   scenario "user supplies existing email with wrong password" do
+    user = FactoryGirl.create(:user)
+    visit new_user_session_path
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: 'wrongpw'
+    click_button 'Sign In'
 
+    expect(page).to have_content('Invalid email or password.')
+    expect(page).to have_content('Sign Up Here!')
+    expect(page).to_not have_content('Sign Out!')
   end
 
   scenario "an already authenticated user cannot sign in again" do
+    user = FactoryGirl.create(:user)
+    visit new_user_session_path
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign In'
 
+    expect(page).to have_content('Sign Out')
+    expect(page).to_not have_content('Sign in')
+
+    visit new_user_session_path
+
+    expect(page).to_not have_content('Sign in')
   end
 end
