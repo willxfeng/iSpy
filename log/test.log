@@ -5935,3 +5935,641 @@ Processing by RegistrationsController#edit as HTML
   Rendered layouts/_nav.html.erb (0.1ms)
 Completed 200 OK in 18ms (Views: 14.5ms | ActiveRecord: 0.6ms)
   [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (699.8ms)[0m  [1mDROP DATABASE IF EXISTS "ispy_test"[0m
+  [1m[35m (435.8ms)[0m  CREATE DATABASE "ispy_test" ENCODING = 'unicode'
+  [1m[36mSQL (15.0ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (27.1ms)[0m  CREATE TABLE "arts" ("id" serial primary key, "name" character varying NOT NULL, "location" character varying NOT NULL, "description" character varying NOT NULL, "category" character varying NOT NULL, "artist" character varying, "average_rating" integer) 
+  [1m[36m (10.2ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (3.5ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (3.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (4.8ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (1.9ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.6ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160104202240')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160104201618')
+  [1m[35mActiveRecord::SchemaMigration Load (0.8ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+Started GET "/arts/new" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by ArtsController#new as HTML
+  Rendered arts/new.html.erb within layouts/application (49.1ms)
+  Rendered layouts/_nav.html.erb (10.9ms)
+Completed 200 OK in 518ms (Views: 486.7ms | ActiveRecord: 9.3ms)
+Started POST "/arts" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by ArtsController#create as HTML
+  Parameters: {"utf8"=>"✓", "art"=>{"name"=>"Chinatown Community Mural", "artist"=>"Unknown", "location"=>"Surface Rd & Beach St", "category"=>"mural", "description"=>"Chinese community mural commissioned\n    by the mayor's mural crew."}, "commit"=>"Add"}
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "arts" ("name", "location", "description", "category", "artist") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Chinatown Community Mural"], ["location", "Surface Rd & Beach St"], ["description", "Chinese community mural commissioned\n    by the mayor's mural crew."], ["category", "mural"], ["artist", "Unknown"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/arts/1
+Completed 302 Found in 11ms (ActiveRecord: 1.9ms)
+Started GET "/arts/1" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArt Load (0.6ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered arts/show.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 32ms (Views: 13.0ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.6ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/arts/new" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by ArtsController#new as HTML
+  Rendered arts/new.html.erb within layouts/application (3.6ms)
+  Rendered layouts/_nav.html.erb (0.7ms)
+Completed 200 OK in 54ms (Views: 53.8ms | ActiveRecord: 0.0ms)
+Started POST "/arts" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by ArtsController#create as HTML
+  Parameters: {"utf8"=>"✓", "art"=>{"name"=>"Chinatown", "artist"=>"", "location"=>"", "category"=>"", "description"=>""}, "commit"=>"Add"}
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered arts/new.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 13ms (Views: 7.2ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "arts" ("name", "location", "description", "artist", "category") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Chinatown Community Mural"], ["location", "Surface Rd & Beach St"], ["description", "Chinese community mural commissioned\n      by the mayor's mural crew."], ["artist", "Made up Artist"], ["category", "Graffiti"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/arts/2" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArt Load (0.6ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered arts/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.6ms)
+Started GET "/arts/2/edit" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by ArtsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mArt Load (0.6ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered arts/edit.html.erb within layouts/application (9.9ms)
+  Rendered layouts/_nav.html.erb (6.1ms)
+Completed 200 OK in 38ms (Views: 36.1ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "arts" ("name", "location", "description", "artist", "category") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["name", "Chinatown Community Mural"], ["location", "Surface Rd & Beach St"], ["description", "Chinese community mural commissioned\n      by the mayor's mural crew."], ["artist", "Made up Artist"], ["category", "Graffiti"]]
+  [1m[36m (1.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/arts/3" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mArt Load (0.6ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 3]]
+  Rendered arts/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.6ms)
+Started GET "/arts/3/edit" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by ArtsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArt Load (0.6ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered arts/edit.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.6ms)
+Started PATCH "/arts/3" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by ArtsController#update as HTML
+  Parameters: {"utf8"=>"✓", "art"=>{"name"=>"Chinatown Community Mural", "artist"=>"Another Artist", "location"=>"Surface Rd & Beach St", "category"=>"Graffiti", "description"=>"Chinese community mural commissioned\n      by the mayor's mural crew."}, "commit"=>"Update", "id"=>"3"}
+  [1m[35mArt Load (0.6ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "arts" SET "artist" = $1 WHERE "arts"."id" = $2  [["artist", "Another Artist"], ["id", 3]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/arts/3
+Completed 302 Found in 8ms (ActiveRecord: 1.6ms)
+Started GET "/arts/3" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mArt Load (2.1ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 3]]
+  Rendered arts/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 7ms (Views: 3.8ms | ActiveRecord: 2.1ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "arts" ("name", "location", "description", "artist", "category") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["name", "Chinatown Community Mural"], ["location", "Surface Rd & Beach St"], ["description", "Chinese community mural commissioned\n      by the mayor's mural crew."], ["artist", "Made up Artist"], ["category", "Graffiti"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/arts/4" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mArt Load (0.3ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered arts/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.3ms)
+Started GET "/arts/4/edit" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by ArtsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArt Load (0.4ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered arts/edit.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.4ms)
+Started PATCH "/arts/4" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by ArtsController#update as HTML
+  Parameters: {"utf8"=>"✓", "art"=>{"name"=>"Chinatown Community Mural", "artist"=>"Made up Artist", "location"=>" ", "category"=>"Graffiti", "description"=>"Chinese community mural commissioned\n      by the mayor's mural crew."}, "commit"=>"Update", "id"=>"4"}
+  [1m[35mArt Load (0.8ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered arts/edit.html.erb within layouts/application (7.6ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 16ms (Views: 11.4ms | ActiveRecord: 1.2ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-05 14:13:37 -0500
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (11.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (35.1ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 111ms (Views: 76.7ms | ActiveRecord: 3.3ms)
+Started POST "/users" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"first_name"=>"Jon", "last_name"=>"Smith", "email"=>"user@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (2.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'user@example.com' LIMIT 1
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "user@example.com"], ["encrypted_password", "$2a$04$TiWWd7gge/MFD/EdvmltDeXdd0jIzcHl.xKGBa1HdXc6/pJc3dNha"], ["first_name", "Jon"], ["last_name", "Smith"], ["created_at", "2016-01-05 19:13:38.182436"], ["updated_at", "2016-01-05 19:13:38.182436"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2016-01-05 19:13:38.197768"], ["current_sign_in_at", "2016-01-05 19:13:38.197768"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2016-01-05 19:13:38.199957"], ["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 125ms (ActiveRecord: 5.5ms)
+Started GET "/" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by ArtsController#index as HTML
+  [1m[35mArt Load (1.4ms)[0m  SELECT "arts".* FROM "arts"  ORDER BY id ASC
+  Rendered arts/index.html.erb within layouts/application (3.7ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered layouts/_nav.html.erb (3.8ms)
+Completed 200 OK in 15ms (Views: 12.8ms | ActiveRecord: 2.0ms)
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (5.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (15.3ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 22ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.6ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered devise/shared/_links.html.erb (6.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (24.1ms)
+  Rendered layouts/_nav.html.erb (1.6ms)
+Completed 200 OK in 41ms (Views: 29.4ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (12.6ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 18ms (Views: 16.7ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"first_name"=>"Jon", "last_name"=>"Smith", "email"=>"user@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'user@example.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered devise/shared/_links.html.erb (4.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (16.6ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 34ms (Views: 20.2ms | ActiveRecord: 1.4ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.7ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'person1@example.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "person1@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$0k0D3zY5hM8nI5S4/Ee8LeTvWacLcpSx9sd8EbulZAX.dKQpTpY/W"], ["created_at", "2016-01-05 19:13:38.507183"], ["updated_at", "2016-01-05 19:13:38.507183"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (15.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (35.9ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 75ms (Views: 73.6ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person1@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "person1@example.com"]]
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2016-01-05 19:13:38.651133"], ["current_sign_in_at", "2016-01-05 19:13:38.651133"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2016-01-05 19:13:38.652549"], ["id", 2]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/users/edit
+Completed 302 Found in 31ms (ActiveRecord: 1.9ms)
+Started GET "/users/edit" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (15.4ms)
+  Rendered layouts/_nav.html.erb (0.1ms)
+Completed 200 OK in 31ms (Views: 28.3ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (14.7ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 19ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"abc@xyz.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "abc@xyz.com"]]
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.8ms)
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"abc@xyz.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendered devise/shared/_links.html.erb (7.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.6ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 22ms (Views: 18.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'person2@example.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "person2@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$jY.e7VPUJQTojE6FyZiU/.BQTweVqumdCVfs9AC5PSF.IOqZpemvy"], ["created_at", "2016-01-05 19:13:38.795074"], ["updated_at", "2016-01-05 19:13:38.795074"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.6ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person2@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "person2@example.com"]]
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.8ms)
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person2@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendered devise/shared/_links.html.erb (7.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.2ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 23ms (Views: 19.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'person3@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["email", "person3@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$U7.vcIzSCPkgr8CHg2dCB.J95.MtZqGxQwPpqPXCh7B7Ahd1f7JrO"], ["created_at", "2016-01-05 19:13:38.881970"], ["updated_at", "2016-01-05 19:13:38.881970"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (14.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (26.1ms)
+  Rendered layouts/_nav.html.erb (3.3ms)
+Completed 200 OK in 34ms (Views: 32.6ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person3@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "person3@example.com"]]
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2016-01-05 19:13:38.951540"], ["current_sign_in_at", "2016-01-05 19:13:38.951540"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2016-01-05 19:13:38.953530"], ["id", 4]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/users/edit
+Completed 302 Found in 18ms (ActiveRecord: 1.9ms)
+Started GET "/users/edit" for 127.0.0.1 at 2016-01-05 14:13:38 -0500
+Processing by RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (14.5ms)
+  Rendered layouts/_nav.html.erb (0.1ms)
+Completed 200 OK in 23ms (Views: 19.0ms | ActiveRecord: 0.7ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:13:39 -0500
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Redirected to http://www.example.com/users/edit
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 12ms (ActiveRecord: 0.8ms)
+Started GET "/users/edit" for 127.0.0.1 at 2016-01-05 14:13:39 -0500
+Processing by RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (46.8ms)
+  Rendered layouts/_nav.html.erb (0.1ms)
+Completed 200 OK in 58ms (Views: 51.0ms | ActiveRecord: 0.7ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2016-01-05 14:13:39 -0500
+Processing by ArtsController#index as HTML
+  [1m[36mArt Load (0.9ms)[0m  [1mSELECT "arts".* FROM "arts"  ORDER BY id ASC[0m
+  Rendered arts/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_nav.html.erb (0.7ms)
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-01-05 14:13:39 -0500
+Processing by ArtsController#index as HTML
+  [1m[35mArt Load (3.0ms)[0m  SELECT "arts".* FROM "arts"  ORDER BY id ASC
+  Rendered arts/index.html.erb within layouts/application (10.4ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 15ms (Views: 11.5ms | ActiveRecord: 3.0ms)
+Started GET "/arts/new" for 127.0.0.1 at 2016-01-05 14:13:39 -0500
+Processing by ArtsController#new as HTML
+  Rendered arts/new.html.erb within layouts/application (10.3ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 15ms (Views: 14.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+Started GET "/arts/new" for 127.0.0.1 at 2016-01-05 14:15:34 -0500
+Processing by ArtsController#new as HTML
+  Rendered arts/new.html.erb within layouts/application (44.2ms)
+  Rendered layouts/_nav.html.erb (9.0ms)
+Completed 200 OK in 508ms (Views: 472.4ms | ActiveRecord: 7.3ms)
+Started POST "/arts" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by ArtsController#create as HTML
+  Parameters: {"utf8"=>"✓", "art"=>{"name"=>"Chinatown Community Mural", "artist"=>"Unknown", "location"=>"Surface Rd & Beach St", "category"=>"mural", "description"=>"Chinese community mural commissioned\n    by the mayor's mural crew."}, "commit"=>"Add"}
+  [1m[36m (0.4ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "arts" ("name", "location", "description", "category", "artist") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["name", "Chinatown Community Mural"], ["location", "Surface Rd & Beach St"], ["description", "Chinese community mural commissioned\n    by the mayor's mural crew."], ["category", "mural"], ["artist", "Unknown"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/arts/5
+Completed 302 Found in 12ms (ActiveRecord: 2.5ms)
+Started GET "/arts/5" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mArt Load (0.7ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered arts/show.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 21ms (Views: 7.6ms | ActiveRecord: 0.7ms)
+  [1m[36m (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/arts/new" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by ArtsController#new as HTML
+  Rendered arts/new.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+Started POST "/arts" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by ArtsController#create as HTML
+  Parameters: {"utf8"=>"✓", "art"=>{"name"=>"Chinatown", "artist"=>"", "location"=>"", "category"=>"", "description"=>""}, "commit"=>"Add"}
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered arts/new.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 12ms (Views: 6.5ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "arts" ("name", "location", "description", "artist", "category") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["name", "Chinatown Community Mural"], ["location", "Surface Rd & Beach St"], ["description", "Chinese community mural commissioned\n      by the mayor's mural crew."], ["artist", "Made up Artist"], ["category", "Graffiti"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/arts/6" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mArt Load (0.5ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 6]]
+  Rendered arts/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.5ms)
+Started GET "/arts/6/edit" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by ArtsController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mArt Load (0.6ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered arts/edit.html.erb within layouts/application (5.6ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 13ms (Views: 11.2ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.6ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "arts" ("name", "location", "description", "artist", "category") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Chinatown Community Mural"], ["location", "Surface Rd & Beach St"], ["description", "Chinese community mural commissioned\n      by the mayor's mural crew."], ["artist", "Made up Artist"], ["category", "Graffiti"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/arts/7" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mArt Load (0.6ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  Rendered arts/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.6ms)
+Started GET "/arts/7/edit" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by ArtsController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mArt Load (0.7ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 7]]
+  Rendered arts/edit.html.erb within layouts/application (6.5ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.7ms)
+Started PATCH "/arts/7" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by ArtsController#update as HTML
+  Parameters: {"utf8"=>"✓", "art"=>{"name"=>"Chinatown Community Mural", "artist"=>"Another Artist", "location"=>"Surface Rd & Beach St", "category"=>"Graffiti", "description"=>"Chinese community mural commissioned\n      by the mayor's mural crew."}, "commit"=>"Update", "id"=>"7"}
+  [1m[36mArt Load (0.6ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "arts" SET "artist" = $1 WHERE "arts"."id" = $2[0m  [["artist", "Another Artist"], ["id", 7]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/arts/7
+Completed 302 Found in 7ms (ActiveRecord: 1.5ms)
+Started GET "/arts/7" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mArt Load (0.4ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  Rendered arts/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "arts" ("name", "location", "description", "artist", "category") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Chinatown Community Mural"], ["location", "Surface Rd & Beach St"], ["description", "Chinese community mural commissioned\n      by the mayor's mural crew."], ["artist", "Made up Artist"], ["category", "Graffiti"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/arts/8" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by ArtsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mArt Load (0.4ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  Rendered arts/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.4ms)
+Started GET "/arts/8/edit" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by ArtsController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mArt Load (0.5ms)[0m  SELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1  [["id", 8]]
+  Rendered arts/edit.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.5ms)
+Started PATCH "/arts/8" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by ArtsController#update as HTML
+  Parameters: {"utf8"=>"✓", "art"=>{"name"=>"Chinatown Community Mural", "artist"=>"Made up Artist", "location"=>" ", "category"=>"Graffiti", "description"=>"Chinese community mural commissioned\n      by the mayor's mural crew."}, "commit"=>"Update", "id"=>"8"}
+  [1m[36mArt Load (0.4ms)[0m  [1mSELECT  "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered arts/edit.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 13ms (Views: 7.8ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (8.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (29.0ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 97ms (Views: 70.4ms | ActiveRecord: 3.1ms)
+Started POST "/users" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"first_name"=>"Jon", "last_name"=>"Smith", "email"=>"user@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (2.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'user@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["email", "user@example.com"], ["encrypted_password", "$2a$04$lH.2zXt8m/0F2uorOtzvpON75ZbmXvzJwyYpdzoE84m1ex2vgLT6u"], ["first_name", "Jon"], ["last_name", "Smith"], ["created_at", "2016-01-05 19:15:35.624663"], ["updated_at", "2016-01-05 19:15:35.624663"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2016-01-05 19:15:35.628658"], ["current_sign_in_at", "2016-01-05 19:15:35.628658"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2016-01-05 19:15:35.629775"], ["id", 5]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 88ms (ActiveRecord: 4.3ms)
+Started GET "/" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by ArtsController#index as HTML
+  [1m[36mArt Load (1.3ms)[0m  [1mSELECT "arts".* FROM "arts"  ORDER BY id ASC[0m
+  Rendered arts/index.html.erb within layouts/application (3.0ms)
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  Rendered layouts/_nav.html.erb (49.5ms)
+Completed 200 OK in 59ms (Views: 56.5ms | ActiveRecord: 1.9ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (11.3ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 16ms (Views: 14.8ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered devise/shared/_links.html.erb (3.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (15.5ms)
+  Rendered layouts/_nav.html.erb (0.4ms)
+Completed 200 OK in 26ms (Views: 18.4ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (12.5ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"first_name"=>"Jon", "last_name"=>"Smith", "email"=>"user@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.7ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'user@example.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered devise/shared/_links.html.erb (5.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (14.5ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 30ms (Views: 20.0ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'person1@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["email", "person1@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$92hu8UaWIF1B6ZhHk/xmPe5sxwGBnRy00sF1pzv9sG2WcIRLqyY22"], ["created_at", "2016-01-05 19:15:35.888197"], ["updated_at", "2016-01-05 19:15:35.888197"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (10.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (25.4ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 59ms (Views: 56.6ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:15:35 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person1@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "person1@example.com"]]
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2016-01-05 19:15:35.991892"], ["current_sign_in_at", "2016-01-05 19:15:35.991892"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2016-01-05 19:15:35.993286"], ["id", 6]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 29ms (ActiveRecord: 1.8ms)
+Started GET "/" for 127.0.0.1 at 2016-01-05 14:15:36 -0500
+Processing by ArtsController#index as HTML
+  [1m[35mArt Load (1.1ms)[0m  SELECT "arts".* FROM "arts"  ORDER BY id ASC
+  Rendered arts/index.html.erb within layouts/application (2.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  Rendered layouts/_nav.html.erb (2.3ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 1.7ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:15:36 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.3ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:15:36 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"abc@xyz.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "abc@xyz.com"]]
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.8ms)
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"abc@xyz.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendered devise/shared/_links.html.erb (7.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (17.3ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 25ms (Views: 20.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (1.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'person2@example.com' LIMIT 1
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "person2@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$naOnug8ZstUZhzoZ3oljo.jCHW/Jj/8.dw.YOrA9StCrbKGJSvLc2"], ["created_at", "2016-01-05 19:15:36.120481"], ["updated_at", "2016-01-05 19:15:36.120481"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:15:36 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (9.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (31.7ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 39ms (Views: 36.7ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:15:36 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person2@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "person2@example.com"]]
+Completed 401 Unauthorized in 7ms (ActiveRecord: 1.5ms)
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person2@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendered devise/shared/_links.html.erb (7.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.3ms)
+  Rendered layouts/_nav.html.erb (0.3ms)
+Completed 200 OK in 23ms (Views: 19.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'person3@example.com' LIMIT 1[0m
+  [1m[35mSQL (7.8ms)[0m  INSERT INTO "users" ("email", "first_name", "last_name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["email", "person3@example.com"], ["first_name", "John"], ["last_name", "Smith"], ["encrypted_password", "$2a$04$9d4LUSaasNr4/QjM3e46rO7YTZgijQtkbyO1TfKMkzipfPu9oPE9K"], ["created_at", "2016-01-05 19:15:36.234487"], ["updated_at", "2016-01-05 19:15:36.234487"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:15:36 -0500
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (8.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.6ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:15:36 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"person3@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "person3@example.com"]]
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2016-01-05 19:15:36.292375"], ["current_sign_in_at", "2016-01-05 19:15:36.292375"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2016-01-05 19:15:36.294474"], ["id", 8]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 15ms (ActiveRecord: 2.0ms)
+Started GET "/" for 127.0.0.1 at 2016-01-05 14:15:36 -0500
+Processing by ArtsController#index as HTML
+  [1m[35mArt Load (1.1ms)[0m  SELECT "arts".* FROM "arts"  ORDER BY id ASC
+  Rendered arts/index.html.erb within layouts/application (2.5ms)
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 8]]
+  Rendered layouts/_nav.html.erb (3.6ms)
+Completed 200 OK in 11ms (Views: 7.9ms | ActiveRecord: 2.4ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-05 14:15:36 -0500
+Processing by SessionsController#new as HTML
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 8]]
+Redirected to http://www.example.com/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 1.3ms)
+Started GET "/" for 127.0.0.1 at 2016-01-05 14:15:36 -0500
+Processing by ArtsController#index as HTML
+  [1m[36mArt Load (1.2ms)[0m  [1mSELECT "arts".* FROM "arts"  ORDER BY id ASC[0m
+  Rendered arts/index.html.erb within layouts/application (1.9ms)
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 8]]
+  Rendered layouts/_nav.html.erb (3.4ms)
+Completed 200 OK in 10ms (Views: 6.8ms | ActiveRecord: 2.4ms)
+  [1m[36m (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2016-01-05 14:15:36 -0500
+Processing by ArtsController#index as HTML
+  [1m[36mArt Load (0.6ms)[0m  [1mSELECT "arts".* FROM "arts"  ORDER BY id ASC[0m
+  Rendered arts/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_nav.html.erb (0.6ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-01-05 14:15:36 -0500
+Processing by ArtsController#index as HTML
+  [1m[35mArt Load (0.6ms)[0m  SELECT "arts".* FROM "arts"  ORDER BY id ASC
+  Rendered arts/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_nav.html.erb (0.5ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.6ms)
+Started GET "/arts/new" for 127.0.0.1 at 2016-01-05 14:15:36 -0500
+Processing by ArtsController#new as HTML
+  Rendered arts/new.html.erb within layouts/application (5.1ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
