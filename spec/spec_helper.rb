@@ -1,3 +1,5 @@
+require 'valid_attribute'
+
 require 'coveralls'
 Coveralls.wear!('rails')
 
