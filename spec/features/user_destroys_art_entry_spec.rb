@@ -9,7 +9,7 @@ feature "user deletes an entry" do
       category: "Graffiti"
     )
   end
-    
+
   scenario "user deletes an entry" do
     visit "/arts/#{art.id}"
     click_on "Delete this entry"

@@ -43,7 +43,6 @@ class ArtsController < ApplicationController
     redirect_to arts_path
   end
 
-
   private
 
   def art_params
