@@ -3,7 +3,9 @@ require 'rails_helper'
 feature 'user can create an account' do
 
   scenario "user specifies valid and required info" do
-    visit new_user_registration_path
+    visit root_path
+    click_link "Sign Up Here!"
+
     fill_in "First Name", with: "Jon"
     fill_in "Last Name", with: "Smith"
     fill_in "Email", with: "user@example.com"
@@ -17,7 +19,8 @@ feature 'user can create an account' do
   end
 
   scenario "user does not provide required information" do
-    visit new_user_registration_path
+    visit root_path
+    click_link "Sign Up Here!"
 
     click_button "Sign up"
     expect(page).to have_content("First name can't be blank")
@@ -27,7 +30,9 @@ feature 'user can create an account' do
   end
 
   scenario "password confirmation does not match confirmation" do
-    visit new_user_registration_path
+    visit root_path
+    click_link "Sign Up Here!"
+
     fill_in "First Name", with: "Jon"
     fill_in "Last Name", with: "Smith"
     fill_in "Email", with: "user@example.com"
