@@ -14,7 +14,7 @@ class ArtsController < ApplicationController
   def create
     @art = Art.new(art_params)
     if @art.save
-      respond_to { |format| format.html { redirect_to @art } }
+      respond_to { |format| format.html { redirect_to art_path(@art) } }
     else
       flash[:notice] = "You must fill out all of the required fields"
       render :new

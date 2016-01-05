@@ -1,17 +1,7 @@
 require 'rails_helper'
 feature "User adds street art" do
-  scenario "user visits new art page" do
-    visit "/arts/new"
-
-    expect(page).to have_content "Name:"
-    expect(page).to have_content "Location:"
-    expect(page).to have_content "Description:"
-    expect(page).to have_content "Artist:"
-    expect(page).to have_button "Add"
-  end
-
   scenario "user successfully fills out form and adds new art" do
-    visit "/arts/new"
+    visit new_art_path
 
     fill_in "art_name", with: "Chinatown Community Mural"
     fill_in "art_location", with: "Surface Rd & Beach St"
@@ -29,7 +19,7 @@ feature "User adds street art" do
   end
 
   scenario "user unsuccessfully fills out form and remains on form page" do
-    visit "/arts/new"
+    visit new_art_path
 
     fill_in "art_name", with: "Chinatown"
     click_on "Add"
