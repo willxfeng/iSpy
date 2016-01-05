@@ -28,7 +28,7 @@ feature 'user can create an account' do
 
   scenario "password confirmation does not match confirmation" do
     visit new_user_registration_path
-    figitll_in "First Name", with: "Jon"
+    fill_in "First Name", with: "Jon"
     fill_in "Last Name", with: "Smith"
     fill_in "Email", with: "user@example.com"
     fill_in "Password", with: "Password"
