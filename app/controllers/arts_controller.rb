@@ -21,10 +21,11 @@ class ArtsController < ApplicationController
 
   def art_params
     params.require(:art).permit(
-    :name, :location,
-    :description,
-    :category,
-    :artist
+      :name,
+      :location,
+      :description,
+      :category,
+      :artist
     )
   end
 end
