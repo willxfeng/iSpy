@@ -1,0 +1,62 @@
+$header-font-color:#088da5;
+$font-color: #20b2aa;
+
+body {
+
+background-color: black;
+
+}
+
+h1, h3 {
+  text-align: center;
+  color: $header-font-color;
+
+}
+
+
+#about {
+
+border: 3px solid black;
+text-align: center;
+padding: 5px;
+margin: 10px;
+color: #088da5;
+
+}
+
+#recently-reviewed {
+
+border: 3px solid black;
+text-align: center;
+padding: 5px;
+margin: 10px;
+color: #088da5;
+
+}
+
+#new {
+
+  border: 3px solid black;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+  color: #088da5;
+
+
+}
+
+#all-art {
+
+  border: 3px solid black;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+  color: #088da5;
+
+}
+
+.label {
+  text-align: center;
+  display: block;
+
+}
