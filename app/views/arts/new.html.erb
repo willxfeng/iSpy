@@ -1,32 +1,7 @@
-<%= form_for(@art) do |f| %>
-  <div class="field">
-    <%= f.label "Name:" %>
-    <%= f.text_field :name %>
-  </div>
+<h1>Add Some Sweet Street Art!</h1>
 
-  <div class="field">
-    <%= f.label "Artist:"%>
-    <%= f.text_field :artist %>
-  </div>
-
-  <div class="field">
-    <%= f.label "Location:" %>
-    <%= f.text_field :location %>
-  </div>
-
-  <div class="field">
-    <%= f.label "Category:" %>
-    <%= f.text_field :category %>
-  </div>
-
-  <div class="field">
-    <%= f.label "Description:" %>
-    <%= f.text_field :description %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Add" %>
-  </div>
-<% end %>
+<div class="large-4 columns" id='border'>
+  <%= render 'new_form' %>
+</div>
 
 <%= link_to "Back", arts_path %>
