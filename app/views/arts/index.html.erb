@@ -6,11 +6,7 @@
 
 
 <body>
-  <br>
-
 <h1> Featured Street Art </h1>
-
-
 
 <div class="orbit-container">
 <ul class="example-orbit" data-orbit>
@@ -42,7 +38,6 @@
 </ul>
 </div>
 
-
 <div class="row">
   <div class="medium-5 columns about"><h3>Welcome to iSpy!</h3>
   <p> We are a group of rag-tag computer programmers who needed a BADASS project to take over the world. Join us in our journey to success. </p></div>
@@ -51,7 +46,6 @@
   </div>
 </div>
 
-
 <div class="row">
   <div class="medium-5 columns new"><h3><%= link_to "Add New Street Art", new_art_path %></h3></div>
   <div class="medium-5 columns all-art"><h3><%= link_to "View All Art", new_art_path %></h3></div>
@@ -59,50 +53,38 @@
 
 <h1> View The Street Art Gallery </h1>
 
-
-<ul class="medium-block-grid-3">
-  <li> <img src="https://static.pexels.com/photos/6989/city-love-rainbow-nyc.jpg" alt="slide 2" />
-  <span class="label">"Two Women" by An Artist. Location: Boston, MA</span>
-  </li>
-  <li> <img src="https://static.pexels.com/photos/958/graffiti-wall-street-art.jpg" alt="slide 3" />
-    <span class="label">"Graffiti" by Anonymous. Location: Boston, MA</span>
-  </li>
-  <li><img src="https://static.pexels.com/photos/4439/city-art-graffiti-wall.jpg" alt="slide 1" />
-    <span class="label">"Hipster Beard" by Anonymous. Location: Boston, MA</span>
-  </li>
-  <li> <img src="https://static.pexels.com/photos/6739/art-graffiti-abstract-vintage.jpg" alt="slide 2" />
-  <span class="label">"Two Women" by An Artist. Location: Boston, MA</span>
-  </li>
-  <li> <img src="https://static.pexels.com/photos/4441/city-people-art-sidewalk.jpg" alt="slide 3" />
-    <span class="label">"Graffiti" by Anonymous. Location: Boston, MA</span>
-  </li>
-  <li><img src="https://static.pexels.com/photos/4776/man-sunglasses-art-graffiti.jpg" alt="slide 1" />
-    <span class="label">"Hipster Beard" by Anonymous. Location: Boston, MA</span>
-  </li>
-  <li> <img src="https://static.pexels.com/photos/2724/art-graffiti-women-wall.jpg" alt="slide 2" />
-  <span class="label">"Two Women" by An Artist. Location: Boston, MA</span>
-  </li>
-  <li> <img src="https://static.pexels.com/photos/958/graffiti-wall-street-art.jpg" alt="slide 3" />
-    <span class="label">"Graffiti" by Anonymous. Location: Boston, MA</span>
-  </li>
-  <li><img src="https://static.pexels.com/photos/4776/man-sunglasses-art-graffiti.jpg" alt="slide 1" />
-    <span class="label">"Hipster Beard" by Anonymous. Location: Boston, MA</span>
-  </li>
-</ul>
-
-
-
-
-
+  <ul class="medium-block-grid-3">
+    <li> <img src="https://static.pexels.com/photos/6989/city-love-rainbow-nyc.jpg" alt="slide 2" />
+    <span class="label">"Two Women" by An Artist. Location: Boston, MA</span>
+    </li>
+    <li> <img src="https://static.pexels.com/photos/958/graffiti-wall-street-art.jpg" alt="slide 3" />
+      <span class="label">"Graffiti" by Anonymous. Location: Boston, MA</span>
+    </li>
+    <li><img src="https://static.pexels.com/photos/4439/city-art-graffiti-wall.jpg" alt="slide 1" />
+      <span class="label">"Hipster Beard" by Anonymous. Location: Boston, MA</span>
+    </li>
+    <li> <img src="https://static.pexels.com/photos/6739/art-graffiti-abstract-vintage.jpg" alt="slide 2" />
+    <span class="label">"Two Women" by An Artist. Location: Boston, MA</span>
+    </li>
+    <li> <img src="https://static.pexels.com/photos/4441/city-people-art-sidewalk.jpg" alt="slide 3" />
+      <span class="label">"Graffiti" by Anonymous. Location: Boston, MA</span>
+    </li>
+    <li><img src="https://static.pexels.com/photos/4776/man-sunglasses-art-graffiti.jpg" alt="slide 1" />
+      <span class="label">"Hipster Beard" by Anonymous. Location: Boston, MA</span>
+    </li>
+    <li> <img src="https://static.pexels.com/photos/2724/art-graffiti-women-wall.jpg" alt="slide 2" />
+    <span class="label">"Two Women" by An Artist. Location: Boston, MA</span>
+    </li>
+    <li> <img src="https://static.pexels.com/photos/958/graffiti-wall-street-art.jpg" alt="slide 3" />
+      <span class="label">"Graffiti" by Anonymous. Location: Boston, MA</span>
+    </li>
+    <li><img src="https://static.pexels.com/photos/4776/man-sunglasses-art-graffiti.jpg" alt="slide 1" />
+      <span class="label">"Hipster Beard" by Anonymous. Location: Boston, MA</span>
+    </li>
+  </ul>
+  <!-- <ol>
+  <% @arts.each do |art| %>
+    <li><%= link_to "#{art.name}", art %> </li>
+  <% end %>
+  </ol> -->
 </body>
-
-
-
-
-
-
-<ol>
-<% @arts.each do |art| %>
-  <li><%= link_to "#{art.name}", art %> </li>
-<% end %>
-</ol>
