@@ -1,33 +1,13 @@
-<%= form_for(@art) do |f| %>
-  <div class="field">
-    <%= f.label "Name:" %>
-    <%= f.text_field :name %>
+<h1>Edit Art Information</h1>
+
+<div class="row">
+  <div class="small-6 small-centered columns" id='border'>
+    <%= render 'edit_form' %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label "Artist:"%>
-    <%= f.text_field :artist %>
+<div class="row">
+  <div class="small-6 small-centered columns" id='back_link'>
+    <%= link_to "Back to Arts", arts_path %>
   </div>
-
-  <div class="field">
-    <%= f.label "Location:" %>
-    <%= f.text_field :location %>
-  </div>
-
-  <div class="field">
-    <%= f.label "Category:" %>
-    <%= f.text_field :category %>
-  </div>
-
-  <div class="field">
-    <%= f.label "Description:" %>
-    <%= f.text_field :description %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-
-<%= link_to "Back", arts_path %>
+</div>

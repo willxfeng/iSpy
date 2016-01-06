@@ -1,9 +1,5 @@
 <%= form_for(@art) do |f| %>
   <div class="field">
-    <%= f.file_field :picture %>
-  </div>
-
-  <div class="field">
     <%= f.label "Name:" %>
     <%= f.text_field :name %>
   </div>
@@ -29,6 +25,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Add New Art", class: 'button small round form_button' %>
+    <%= f.submit "Update", class: "button small round form_button" %>
   </div>
 <% end %>

@@ -9,7 +9,7 @@ feature "User adds street art" do
     by the mayor's mural crew."
     fill_in "art_artist", with: "Unknown"
     fill_in "art_category", with: "mural"
-    click_on "Add"
+    click_on "Add New Art"
 
     expect(page).to have_content "Chinatown Community Mural"
     expect(page).to have_content "Surface Rd & Beach St"
@@ -22,7 +22,7 @@ feature "User adds street art" do
     visit new_art_path
 
     fill_in "art_name", with: "Chinatown"
-    click_on "Add"
+    click_on "Add New Art"
 
     expect(page).to have_content "You must fill out all of the required fields"
   end

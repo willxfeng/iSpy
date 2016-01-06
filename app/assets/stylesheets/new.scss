@@ -1,3 +1,28 @@
 #border {
   border: 2px solid black;
+  margin: auto;
+  padding: 20px 30px;
+}
+
+body {
+  // background-image: url(https://static.pexels.com/photos/6989/city-love-rainbow-nyc.jpg);
+  background-size: cover;
+}
+
+h1 {
+  text-align: center;
+  color: #088da5;
+  margin-bottom: 50px;
+}
+
+.actions {
+  text-align: center;
+}
+
+#form_button {
+  margin: auto;
+}
+
+#back_link {
+  margin-top: 10px;
 }
