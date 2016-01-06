@@ -1,5 +1,8 @@
+$h1-color:      #088da5;
+$border-color:  #000000;
+
 #border {
-  border: 2px solid black;
+  border: 2px solid $border-color;
   margin: auto;
   padding: 20px 30px;
 }
@@ -10,19 +13,19 @@ body {
 }
 
 h1 {
-  text-align: center;
-  color: #088da5;
+  color: $h1-color;
   margin-bottom: 50px;
+  text-align: center;
 }
 
 .actions {
   text-align: center;
 }
 
-#form_button {
+#form-button {
   margin: auto;
 }
 
-#back_link {
+#back-link {
   margin-top: 10px;
 }
