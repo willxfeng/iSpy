@@ -12,12 +12,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-
-  <nav class="top-bar" data-topbar role="navigation">
-
-     <%= render "layouts/nav" %>
-
-   </nav>
+  <%= render "layouts/nav" %>
 
   <% flash.each do |key, value| %>
     <%= value %>

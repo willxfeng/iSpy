@@ -1,0 +1,49 @@
+$font-color: #088da5;
+$black: #000000;
+
+body {
+  background-color: $black;
+}
+
+h1,
+h3 {
+  color: $font-color;
+  text-align: center;
+}
+
+.about {
+  border: 3px solid $black;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+  color: $font-color;
+}
+
+.recently-reviewed {
+  border: 3px solid $black;
+  color: $font-color;
+  margin: 10px;
+  padding: 5px;
+  text-align: center;
+}
+
+.new {
+  border: 3px solid $black;
+  color: $font-color;
+  margin: 10px;
+  padding: 5px;
+  text-align: center;
+}
+
+.all-art {
+  border: 3px solid $black;
+  color: $font-color;
+  margin: 10px;
+  padding: 5px;
+  text-align: center;
+}
+
+.label {
+  display: block;
+  text-align: center;
+}
