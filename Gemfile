@@ -29,6 +29,8 @@ gem 'valid_attribute'
 
 gem 'foundation-rails'
 
+gem 'carrierwave'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

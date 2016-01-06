@@ -24,6 +24,9 @@ feature "User adds street art" do
     fill_in "art_name", with: "Chinatown"
     click_on "Add New Art"
 
-    expect(page).to have_content "You must fill out all of the required fields"
+    expect(page).to have_content
+      "Location can't be blank.
+      Description can't be blank.
+      Category can't be blank"
   end
 end
