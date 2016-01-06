@@ -26,6 +26,6 @@ feature "User adds street art" do
 
     expect(page).to have_content "Location can't be blank."
     expect(page).to have_content "Description can't be blank."
-    expect(page).to have_content "Category can't be blank."
+    expect(page).to have_content "Category can't be blank"
   end
 end
