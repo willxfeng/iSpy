@@ -8,19 +8,16 @@ feature "User adds review street art" do
       by the mayor's mural crew.",
       artist: "Made up Artist",
       category: "Graffiti",
-    )
-      user = FactoryGirl.create(:user)
-      visit root_path
-      click_link "Sign In!"
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
+      )
+    user = FactoryGirl.create(:user)
+    visit root_path
+    click_link "Sign In!"
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
 
     click_button 'Sign In'
-
-
     visit art_path(new_art)
     click_on "Add New Review"
-
 
     fill_in "body", with: "This was the greatest mural I have ever seen!"
     fill_in "rating", with: 5
@@ -38,7 +35,7 @@ feature "User adds review street art" do
       by the mayor's mural crew.",
       artist: "Made up Artist",
       category: "Graffiti",
-    )
+      )
     user = FactoryGirl.create(:user)
     visit root_path
     click_link "Sign In!"
@@ -48,7 +45,6 @@ feature "User adds review street art" do
 
     visit art_path(new_art)
     click_on "Add New Review"
-
 
     fill_in "body", with: "Cool"
     click_on "Add"
