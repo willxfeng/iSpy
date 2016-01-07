@@ -9,6 +9,7 @@ feature 'user can create an account' do
 
   scenario "user specifies valid and required info" do
 
+    attach_file 'Profile Photo', "#{Rails.root}/spec/support/images/soldier.jpg"
     fill_in "First Name", with: "Jon"
     fill_in "Last Name", with: "Smith"
     fill_in "Email", with: "user@example.com"
@@ -19,6 +20,14 @@ feature 'user can create an account' do
 
     expect(page).to have_content("You're in!")
     expect(page).to have_content("Sign Out")
+    expect(page).to have_css("img[src*='soldier.jpg']")
+  end
+
+  scenario "user uploads non-image file" do
+    attach_file 'Profile Photo', "#{Rails.root}/spec/support/images/text.txt"
+    click_button "Sign up"
+
+    expect(page).to have_content("allowed types: jpg, jpeg, gif, png, bmp")
   end
 
   scenario "user does not provide required information" do

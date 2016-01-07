@@ -25,6 +25,8 @@ gem 'coveralls', require: false
 
 gem 'devise'
 
+gem 'carrierwave'
+
 gem 'valid_attribute'
 
 gem 'foundation-rails'

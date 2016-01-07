@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "iSpy" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -12,14 +12,14 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <%= render "layouts/nav" %>
-
-  <% flash.each do |key, value| %>
-    <%= value %>
-  <% end %>
-
-
   <body>
+    <%= render "layouts/nav" %>
+    
+    <h2>
+      <% flash.each do |key, value| %>
+      <%= value %>
+      <% end %>
+    </h2>
 
     <%= yield %>
 

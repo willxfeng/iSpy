@@ -13,8 +13,18 @@
 
     <ul class="right">
       <% if user_signed_in? %>
-        <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-        <li><%= link_to "Edit Account Info", edit_user_registration_path %>
+        <li class="has-dropdown">
+         <a href="#">
+           <% if current_user.profile_photo? %>
+            <%= image_tag current_user.profile_photo_url, class: 'nav-img' %>
+          <% end %>
+          <%= current_user.full_name %>
+        </a>
+          <ul class="dropdown">
+            <li><%= link_to "Edit Account", edit_user_registration_path %></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+          </ul>
+        </li>
       <% else %>
         <li><%= link_to "Sign In!", new_user_session_path %></li>
         <li><%= link_to "Sign Up Here!", new_user_registration_path %></li>
