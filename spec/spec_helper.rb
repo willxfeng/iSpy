@@ -98,7 +98,7 @@ RSpec.configure do |config|
 =end
 end
 
-def sign_in (user)
+def sign_in(user)
   visit root_path
   click_link 'Sign In'
 
