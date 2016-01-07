@@ -29,7 +29,6 @@ gem 'valid_attribute'
 
 gem 'foundation-rails'
 
-gem 'carrierwave'
 gem 'puma'
 
 gem 'cowsay'
