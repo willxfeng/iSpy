@@ -5,7 +5,6 @@ class ArtsController < ApplicationController
 
   def new
     @art = Art.new
-    @photo = Photo.new
   end
 
   def show

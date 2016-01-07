@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   root "arts#index"
-  resources :arts do
-    resources :photos, only: [:create, :destroy]
-  end
-
+  resources :arts
   devise_for :users, controllers: {
     registrations: "registrations",
     sessions: "sessions"
