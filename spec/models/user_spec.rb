@@ -21,4 +21,14 @@ describe User do
     expect(user).to_not be_valid
     expect(user.errors[:password_confirmation]).to_not be_blank
   end
+
+  context "#full_name" do
+    it "returns full name" do
+      user = User.new(
+        first_name: 'Big',
+        last_name: 'Bird')
+
+      expect(user.full_name).to eq('Big Bird')
+    end
+  end
 end
