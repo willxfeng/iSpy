@@ -1,3 +1,5 @@
+@import "foundation_and_overrides";
+
 $font-color: #088da5;
 $bg-color: #fff;
 
@@ -46,4 +48,8 @@ h3 {
 .label {
   display: block;
   text-align: center;
+}
+
+.nav-img {
+  height: $topbar-height;
 }

@@ -1,7 +1,6 @@
-@import "foundation_and_overrides";
-
-$h1-color:      #088da5;
 $border-color:  #000000;
+$h1-color: #088da5;
+
 
 .border {
   border: 2px solid $border-color;
@@ -25,8 +24,4 @@ h1 {
 
 .back-link {
   margin-top: 10px;
-}
-
-.nav-img {
-  height: $topbar-height;
 }
