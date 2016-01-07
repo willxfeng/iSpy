@@ -1,15 +1,18 @@
 require 'rails_helper'
 feature "User adds street art" do
-  scenario "user successfully fills out form and adds new art" do
-    visit new_art_path
+  before :each do
+    visit root_path
+    click_link 'Add New Street Art'
+  end
 
+  scenario "user successfully fills out form and adds new art" do
     fill_in "art_name", with: "Chinatown Community Mural"
     fill_in "art_location", with: "Surface Rd & Beach St"
     fill_in "art_description", with: "Chinese community mural commissioned
     by the mayor's mural crew."
     fill_in "art_artist", with: "Unknown"
     fill_in "art_category", with: "mural"
-    click_on "Add"
+    click_on "Create Art"
 
     expect(page).to have_content "Chinatown Community Mural"
     expect(page).to have_content "Surface Rd & Beach St"
@@ -19,11 +22,11 @@ feature "User adds street art" do
   end
 
   scenario "user unsuccessfully fills out form and remains on form page" do
-    visit new_art_path
-
     fill_in "art_name", with: "Chinatown"
-    click_on "Add"
+    click_on "Create Art"
 
-    expect(page).to have_content "You must fill out all of the required fields"
+    expect(page).to have_content "Location can't be blank."
+    expect(page).to have_content "Description can't be blank."
+    expect(page).to have_content "Category can't be blank"
   end
 end
