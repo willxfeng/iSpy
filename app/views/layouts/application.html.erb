@@ -12,14 +12,14 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <%= render "layouts/nav" %>
-
-  <% flash.each do |key, value| %>
-    <%= value %>
-  <% end %>
-
-
   <body>
+    <%= render "layouts/nav" %>
+    
+    <h2>
+      <% flash.each do |key, value| %>
+      <%= value %>
+      <% end %>
+    </h2>
 
     <%= yield %>
 

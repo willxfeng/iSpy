@@ -4,16 +4,13 @@ feature 'user edits account' do
 
   before :each do
     @user = FactoryGirl.create(:user)
-    visit new_user_session_path
   end
 
   scenario "an existing user changes email and password" do
-    fill_in 'Email', with: @user.email
-    fill_in 'Password', with: @user.password
-    click_button 'Sign In'
-
+    sign_in(@user)
     click_link 'Edit Account'
 
+    attach_file 'Profile Photo', "#{Rails.root}/spec/support/images/soldier.jpg"
     fill_in 'Email', with: 'new_email@example.com'
     fill_in 'Password', with: 'newpassword'
     fill_in 'Password Confirmation', with: 'newpassword'
@@ -22,13 +19,22 @@ feature 'user edits account' do
 
     expect(page).to have_content("Your account has been updated successfully.")
     expect(page).to have_content('Sign Out')
+    expect(page).to have_css("img[src*='soldier.jpg']")
+  end
+
+  scenario "user uploads non-image file" do
+    sign_in(@user)
+    click_link 'Edit Account'
+
+    attach_file 'Profile Photo', "#{Rails.root}/spec/support/images/text.txt"
+    fill_in 'Current Password', with: @user.password
+    click_button "Update"
+
+    expect(page).to have_content("allowed types: jpg, jpeg, gif, png, bmp")
   end
 
   scenario 'user does not provide required information' do
-    fill_in 'Email', with: @user.email
-    fill_in 'Password', with: @user.password
-    click_button 'Sign In'
-
+    sign_in(@user)
     click_link 'Edit Account'
 
     click_button 'Update'
@@ -36,10 +42,7 @@ feature 'user edits account' do
   end
 
   scenario "new password and confirmation do not match" do
-    fill_in 'Email', with: @user.email
-    fill_in 'Password', with: @user.password
-    click_button 'Sign In'
-
+    sign_in(@user)
     click_link 'Edit Account'
 
     fill_in 'Email', with: 'new_email@example.com'
@@ -52,10 +55,7 @@ feature 'user edits account' do
   end
 
   scenario "user supplies wrong current password" do
-    fill_in 'Email', with: @user.email
-    fill_in 'Password', with: @user.password
-    click_button 'Sign In'
-
+    sign_in(@user)
     click_link 'Edit Account'
 
     fill_in 'Email', with: 'new_email@example.com'
@@ -69,6 +69,8 @@ feature 'user edits account' do
   end
 
   scenario "user cannot access page without signing in" do
+    visit edit_user_registration_path
+    
     expect(page).to have_content('Sign In')
     expect(page).to_not have_content('Edit Account')
   end
