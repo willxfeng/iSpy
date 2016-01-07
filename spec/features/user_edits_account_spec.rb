@@ -70,7 +70,7 @@ feature 'user edits account' do
 
   scenario "user cannot access page without signing in" do
     visit edit_user_registration_path
-    
+
     expect(page).to have_content('Sign In')
     expect(page).to_not have_content('Edit Account')
   end
