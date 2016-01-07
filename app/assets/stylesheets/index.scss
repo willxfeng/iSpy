@@ -1,8 +1,8 @@
 $font-color: #088da5;
-$black: #000000;
+$bg-color: #FFF;
 
 body {
-  background-color: $black;
+  background-color: $bg-color;
 }
 
 h1,
@@ -12,7 +12,7 @@ h3 {
 }
 
 .about {
-  border: 3px solid $black;
+  border: 3px solid $bg-color;
   text-align: center;
   padding: 5px;
   margin: 10px;
@@ -20,7 +20,7 @@ h3 {
 }
 
 .recently-reviewed {
-  border: 3px solid $black;
+  border: 3px solid $bg-color;
   color: $font-color;
   margin: 10px;
   padding: 5px;
@@ -28,7 +28,7 @@ h3 {
 }
 
 .new {
-  border: 3px solid $black;
+  border: 3px solid $bg-color;
   color: $font-color;
   margin: 10px;
   padding: 5px;
@@ -36,7 +36,7 @@ h3 {
 }
 
 .all-art {
-  border: 3px solid $black;
+  border: 3px solid $bg-color;
   color: $font-color;
   margin: 10px;
   padding: 5px;
