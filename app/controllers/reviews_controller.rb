@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-
   def new
     @art = Art.find(params[:art_id])
     @review = Review.new

@@ -8,7 +8,7 @@ feature "User adds review street art" do
       by the mayor's mural crew.",
       artist: "Made up Artist",
       category: "Graffiti",
-      )
+    )
     user = FactoryGirl.create(:user)
     visit root_path
     click_link "Sign In!"
@@ -35,7 +35,7 @@ feature "User adds review street art" do
       by the mayor's mural crew.",
       artist: "Made up Artist",
       category: "Graffiti",
-      )
+    )
     user = FactoryGirl.create(:user)
     visit root_path
     click_link "Sign In!"
