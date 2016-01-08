@@ -1,0 +1,18 @@
+
+<%= form_for [@art, @review] do |f| %>
+  <div class="field">
+    <%= f.label :body, "body" %>
+    <%= f.text_field :body %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rating, "rating"%>
+    <%= f.text_field :rating %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add" %>
+  </div>
+<% end %>
+
+
+<%= link_to "Back", arts_path %>

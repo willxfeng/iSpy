@@ -1,5 +1,6 @@
 $font-color: #088da5;
 $bg-color: #fff;
+$black: #000000;
 
 body {
   background-color: $bg-color;
@@ -46,4 +47,8 @@ h3 {
 .label {
   display: block;
   text-align: center;
+}
+
+a {
+  color: $black;
 }
