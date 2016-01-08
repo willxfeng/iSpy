@@ -1,5 +1,6 @@
 $font-color: #088da5;
 $bg-color: #fff;
+$link-color: #000000;
 
 body {
   background-color: $bg-color;
@@ -49,5 +50,5 @@ h3 {
 }
 
 a {
-  color: $black;
+  color: $link-color;
 }
