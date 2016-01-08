@@ -16,6 +16,29 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @review = Review.find(params[:id])
+    @review.art = @art
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    if @review.update_attributes(review_params)
+      redirect_to art_path(@review.art)
+    else
+      flash[:notice] = "You must fill out all of the required fields"
+      render :edit
+    end
+  end
+
+  def destroy
+    # @reviews = Review.all.order
+    @review= Review.find(params[:id])
+    @review.destroy
+
+    redirect_to art_path
+  end
+
   private
 
   def review_params

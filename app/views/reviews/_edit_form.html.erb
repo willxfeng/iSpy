@@ -1,6 +1,6 @@
 <%= form_for(@review) do |f| %>
 <div class="field">
-  <%= f.label :body, "body" %>
+  <%= f.label :body, "Comment" %>
   <%= f.text_field :body %>
 </div>
 
@@ -9,7 +9,6 @@
   <%= f.text_field :rating %>
 </div>
 <div class="actions">
-  <%= f.submit "Update" %>
+  <%= f.submit "Update Review" %>
 </div>
-<% end %>
 <% end %>
