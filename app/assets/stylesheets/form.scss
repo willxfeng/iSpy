@@ -3,11 +3,14 @@
 
 $h1-color:      #088da5;
 $border-color:  #000000;
+$h1-color: #088da5;
+
 
 .border {
   border: 2px solid $border-color;
+  border-radius: 20px;
   margin: auto;
-  padding: 20px 30px;
+  padding: 20px 30px 0;
 }
 
 h1 {
@@ -25,9 +28,5 @@ h1 {
 }
 
 .back-link {
-  margin-top: 10px;
-}
-
-.nav-img {
-  height: $topbar-height;
+  margin-top: 20px;
 }

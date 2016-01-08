@@ -1,6 +1,7 @@
+@import "foundation_and_overrides";
+
 $font-color: #088da5;
 $bg-color: #fff;
-$black: #000000;
 
 body {
   background-color: $bg-color;
@@ -51,4 +52,8 @@ h3 {
 
 a {
   color: $black;
+}
+
+.nav-img {
+  height: $topbar-height;
 }
