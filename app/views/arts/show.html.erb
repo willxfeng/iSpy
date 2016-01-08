@@ -16,6 +16,7 @@
     <div class="review">
     <p>Comments: <%= review.body %></p>
     <p> Rating: <%= review.rating %></p>
+    <%= link_to "Edit this Review", edit_review_path(review)%><br>
     <% end %>
   </div>
 
