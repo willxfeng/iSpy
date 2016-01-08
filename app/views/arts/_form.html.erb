@@ -1,4 +1,11 @@
 <%= form_for(@art) do |f| %>
+  <%= f.fields_for :photo do |ff| %>
+    <div class="upload-image">
+      <%= f.label :art_photo, 'Photo' %>
+      <%= f.file_field :art_photo %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label "Name:" %>
     <%= f.text_field :name %>
