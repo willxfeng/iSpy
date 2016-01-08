@@ -53,7 +53,7 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_girl_rails', '~> 4.2'
   gem 'valid_attribute'
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda'
 end
 
 group :development do
