@@ -2,14 +2,14 @@ feature "User updates review" do
 
   before :each do
 
-  new_art = Art.create(
-    name: "Chinatown Community Mural",
-    location: "Surface Rd & Beach St",
-    description: "Chinese community mural commissioned
-    by the mayor's mural crew.",
-    artist: "Made up Artist",
-    category: "Graffiti"
-  )
+    new_art = Art.create(
+      name: "Chinatown Community Mural",
+      location: "Surface Rd & Beach St",
+      description: "Chinese community mural commissioned
+      by the mayor's mural crew.",
+      artist: "Made up Artist",
+      category: "Graffiti"
+    )
     user = FactoryGirl.create(:user)
     visit root_path
     click_link "Sign In!"
@@ -25,7 +25,6 @@ feature "User updates review" do
     fill_in "rating", with: 5
     click_on "Add"
   end
-
   scenario "user visits update review page" do
     click_on "Edit this Review"
 
@@ -46,5 +45,5 @@ feature "User updates review" do
     click_on "Update Review"
 
     expect(page).to have_content "You must fill out all of the required fields"
-    end
+  end
 end

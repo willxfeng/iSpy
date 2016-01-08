@@ -7,6 +7,5 @@ Rails.application.routes.draw do
     registrations: "registrations",
     sessions: "sessions"
   }
-  
-resources :reviews, only: [:edit, :update, :destroy]
+  resources :reviews, only: [:edit, :update, :destroy]
 end
