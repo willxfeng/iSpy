@@ -17,6 +17,7 @@
     <p>Comments: <%= review.body %></p>
     <p> Rating: <%= review.rating %></p>
     <%= link_to "Edit this Review", edit_review_path(review)%><br>
+    <%= link_to "Delete this Review", art_path(@art), method: :delete%><br>
     <% end %>
   </div>
 
