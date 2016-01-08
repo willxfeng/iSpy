@@ -19,7 +19,7 @@ feature "User updates art entry" do
     visit "/arts/#{art.id}"
     click_on "Edit this Entry"
     fill_in "art_artist", with: "Another Artist"
-    click_on "Update"
+    click_on "Update Art"
 
     expect(page).to have_content "Another"
   end
@@ -27,7 +27,7 @@ feature "User updates art entry" do
     visit "/arts/#{art.id}"
     click_on "Edit this Entry"
     fill_in "art_location", with: " "
-    click_on "Update"
+    click_on "Update Art"
 
     expect(page).to have_content "You must fill out all of the required fields"
   end

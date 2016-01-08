@@ -1,0 +1,19 @@
+<div class="field">
+  <%= f.label :profile_photo, 'Profile Photo' %>
+  <%= f.file_field :profile_photo %>
+</div>
+
+<div class="field">
+  <%= f.label :first_name, "First Name", required: true, autofocus: true %><br />
+  <%= f.text_field :first_name %>
+</div>
+
+<div class="field">
+  <%= f.label :last_name, "Last Name", required: true %><br />
+  <%= f.text_field :last_name %>
+</div>
+
+<div class="field">
+  <%= f.label :email, required: true %><br />
+  <%= f.email_field :email %>
+</div>

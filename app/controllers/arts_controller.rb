@@ -17,7 +17,7 @@ class ArtsController < ApplicationController
     if @art.save
       respond_to { |format| format.html { redirect_to art_path(@art) } }
     else
-      flash[:notice] = "You must fill out all of the required fields"
+      flash[:error] = @art.errors.full_messages.join('. ')
       render :new
     end
   end

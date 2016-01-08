@@ -25,6 +25,8 @@ gem 'coveralls', require: false
 
 gem 'devise'
 
+gem 'carrierwave'
+
 gem 'valid_attribute'
 
 gem 'foundation-rails'
@@ -32,6 +34,8 @@ gem 'foundation-rails'
 gem 'puma'
 
 gem 'cowsay'
+
+gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
