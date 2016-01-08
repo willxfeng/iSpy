@@ -31,14 +31,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @reviews = Review.all.order
-  #   @review = Review.find(params[:id])
-  #   @review.destroy
-  #
-  #   redirect_to art_path
-  # end
-
   private
 
   def review_params
