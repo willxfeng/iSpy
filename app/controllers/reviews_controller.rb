@@ -32,11 +32,11 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-   @art = Art.find(params[:art_id])
-   Review.find(params[:id]).destroy
+    @art = Art.find(params[:art_id])
+    Review.find(params[:id]).destroy
 
-   redirect_to art_path(@art)
- end
+    redirect_to art_path(@art)
+  end
 
   private
 

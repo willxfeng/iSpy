@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature "User deletes review" do
-
   scenario "User deletes review" do
 
    artwork = Art.create(
@@ -30,5 +29,5 @@ feature "User deletes review" do
 
    expect(page).to have_content "Chinatown"
    expect(page).to_not have_content "greatest mural"
- end
+  end
 end
