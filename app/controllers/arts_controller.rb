@@ -9,12 +9,15 @@ class ArtsController < ApplicationController
 
   def show
     @art = Art.find(params[:id])
+    @photos = @art.photos
+    @photo = Photo.new
     @reviews = @art.reviews
   end
 
   def create
     @art = Art.new(art_params)
     if @art.save
+      flash[:notice] = "Art successfully added!"
       respond_to { |format| format.html { redirect_to art_path(@art) } }
     else
       flash[:error] = @art.errors.full_messages.join('. ')
