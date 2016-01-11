@@ -32,14 +32,10 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    # if the user is allowed to do this
       @art = Art.find(params[:art_id])
       Review.find(params[:id]).destroy
 
       redirect_to art_path(@art)
-    # else
-    #   # flash that they're not allowed
-    # end
   end
 
   private
