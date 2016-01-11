@@ -2,6 +2,18 @@
 
 <img src="https://static.pexels.com/photos/6989/city-love-rainbow-nyc.jpg"/>
 
+<%= form_for [@art, @photos] do |f| %>
+  <div class="upload-image">
+    <%= f.label :art_photo, 'Photo' %>
+    <%= f.file_field :art_photo %>
+  </div>
+
+  <div class="upload-image">
+    <%= f.label :caption, 'Photo' %>
+    <%= f.text_area :caption %>
+  </div>
+<% end %>
+
 <ul>
   <li><%= @art.location %></li>
   <li><%= @art.description %></li>
