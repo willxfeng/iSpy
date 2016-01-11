@@ -10,7 +10,7 @@ class ArtsController < ApplicationController
   def show
     @art = Art.find(params[:id])
     @photos = @art.photos
-    @photo = @art.photos.new
+    @photo = Photo.new
     @reviews = @art.reviews
   end
 

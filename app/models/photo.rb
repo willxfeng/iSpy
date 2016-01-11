@@ -3,4 +3,5 @@ class Photo < ActiveRecord::Base
   belongs_to :art
 
   validates :art_photo, presence: true
+  validates :art, presence: true
 end

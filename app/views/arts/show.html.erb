@@ -1,9 +1,9 @@
 <h1><%= @art.name %></h1>
 
 <div class="orbit-container">
-<ul class="example-orbit" data-orbit>
-  <%= render partial: 'photos', collection: @photos %>
-</ul>
+  <ul class="show-orbit" data-orbit>
+    <%= render partial: "photo", collection: @photos %>
+  </ul>
 </div>
 
 <%= form_for [@art, @photo] do |f| %>
@@ -13,7 +13,7 @@
   </div>
 
   <div class="upload-image">
-    <%= f.label :caption, 'Photo' %>
+    <%= f.label :caption, 'Caption' %>
     <%= f.text_area :caption %>
   </div>
 
