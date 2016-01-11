@@ -8,7 +8,6 @@ FactoryGirl.define do
   end
 
   factory :art do
-    sequence(:id) { |n| }
     name "Chinatown Community Mural"
     location "Surface Rd & Beach St"
     description "Chinese community mural commissioned
@@ -18,7 +17,6 @@ FactoryGirl.define do
   end
 
   factory :review do
-    sequence(:id) { |n| }
     body "What a terrific work of street art!"
     rating 5
     # sequence(:art_id) { |n| }

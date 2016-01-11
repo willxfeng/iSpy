@@ -16,8 +16,8 @@ feature "User deletes review" do
 
     click_on "Delete this Review"
 
-    expect(page).to have_content "Chinatown"
-    expect(page).to_not have_content "greatest mural"
+    expect(page).to have_content artwork.name
+    expect(page).to_not have_content review.body
   end
 
   scenario "User cannot delete review if not user's review" do
