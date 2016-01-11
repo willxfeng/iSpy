@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "arts#index"
   resources :arts do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:new, :create, :destroy]
     resources :photos, only: :create
   end
   devise_for :users, controllers: {

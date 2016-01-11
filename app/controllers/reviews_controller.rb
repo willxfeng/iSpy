@@ -31,6 +31,13 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+      @art = Art.find(params[:art_id])
+      Review.find(params[:id]).destroy
+
+      redirect_to art_path(@art)
+  end
+
   private
 
   def review_params
