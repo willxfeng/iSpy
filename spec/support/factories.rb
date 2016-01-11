@@ -19,8 +19,6 @@ FactoryGirl.define do
   factory :review do
     body "What a terrific work of street art!"
     rating 5
-    # sequence(:art_id) { |n| }
-    # sequence(:user_id) { |n| }
     art
     user
   end
