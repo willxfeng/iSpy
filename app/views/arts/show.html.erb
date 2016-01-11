@@ -1,8 +1,12 @@
 <h1><%= @art.name %></h1>
 
-<img src="https://static.pexels.com/photos/6989/city-love-rainbow-nyc.jpg"/>
+<div class="orbit-container">
+<ul class="example-orbit" data-orbit>
+  <%= render partial: 'photos', collection: @photos %>
+</ul>
+</div>
 
-<%= form_for [@art, @photos] do |f| %>
+<%= form_for [@art, @photo] do |f| %>
   <div class="upload-image">
     <%= f.label :art_photo, 'Photo' %>
     <%= f.file_field :art_photo %>
@@ -12,9 +16,13 @@
     <%= f.label :caption, 'Photo' %>
     <%= f.text_area :caption %>
   </div>
+
+  <div class="upload-image">
+    <%= f.submit class: "button round form-button" %>
+  </div>
 <% end %>
 
-<ul>
+<ul class="art-details">
   <li><%= @art.location %></li>
   <li><%= @art.description %></li>
   <% if @art.artist.present? %>

@@ -1,12 +1,13 @@
-class Photo < ApplicationController
+class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
+    @photo.art_id = params[:art_id]
     if @photo.save
       flash[:notice] = "Photo successfully added!"
     else
-      flash[:error] = @art.errors.full_messages.join('. ')
+      flash[:error] = @photo.errors.full_messages.join('. ')
     end
-    render :new
+    redirect_to art_path(params[:art_id])
   end
 
   private

@@ -1,0 +1,8 @@
+<% @photos.each do |photo| %>
+  <li>
+    <%= image_tag photo.art_photo %>
+    <div class="orbit-caption">
+      <%= photo.caption %>
+    </div>
+  </li>
+<% end %>
