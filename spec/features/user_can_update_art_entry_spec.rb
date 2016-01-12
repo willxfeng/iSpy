@@ -1,10 +1,11 @@
 feature "User updates art entry" do
+
   let(:user) { FactoryGirl.create(:user) }
   let(:art) { FactoryGirl.create(:art) }
-
   scenario "user visits update page" do
     sign_in(art.user)
     visit art_path(art)
+
     click_on "Edit this Entry"
 
     expect(page).to have_button "Update"
@@ -13,6 +14,7 @@ feature "User updates art entry" do
   scenario "authenticated user successfully fills out update form" do
     sign_in(art.user)
     visit art_path(art)
+
     click_on "Edit this Entry"
     fill_in "art_artist", with: "Another Artist"
     click_on "Update Art"
@@ -23,6 +25,7 @@ feature "User updates art entry" do
   scenario "user unsuccessfully fills out update form" do
     sign_in(art.user)
     visit art_path(art)
+
     click_on "Edit this Entry"
     fill_in "art_location", with: " "
     click_on "Update Art"
