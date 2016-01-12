@@ -2,7 +2,7 @@ feature "User adds review street art" do
   let(:user) { FactoryGirl.create(:user) }
   let(:art) { FactoryGirl.create(:art) }
 
-  scenario "authenticated user successfully fills out form and adds new review" do
+  scenario "authenticated user successfully fills out form, adds new review" do
     sign_in(user)
     visit art_path(art)
     click_on "Add New Review"

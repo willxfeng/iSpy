@@ -2,7 +2,7 @@ feature "User updates review" do
   scenario "authenticated user visits update review page" do
     user = FactoryGirl.create(:user)
     art = FactoryGirl.create(:art)
-    review = FactoryGirl.create(:review, art_id: art.id, user_id: user.id)
+    FactoryGirl.create(:review, art_id: art.id, user_id: user.id)
 
     sign_in(user)
     visit art_path(art)
@@ -14,7 +14,7 @@ feature "User updates review" do
   scenario "authenticated user successfully fills out update form" do
     user = FactoryGirl.create(:user)
     art = FactoryGirl.create(:art)
-    review = FactoryGirl.create(:review, art_id: art.id, user_id: user.id)
+    FactoryGirl.create(:review, art_id: art.id, user_id: user.id)
 
     sign_in(user)
     visit art_path(art)
@@ -29,7 +29,7 @@ feature "User updates review" do
   scenario "authenticated user unsuccessfully fills out update form" do
     user = FactoryGirl.create(:user)
     art = FactoryGirl.create(:art)
-    review = FactoryGirl.create(:review, art_id: art.id, user_id: user.id)
+    FactoryGirl.create(:review, art_id: art.id, user_id: user.id)
 
     sign_in(user)
     visit art_path(art)
@@ -51,7 +51,7 @@ feature "User updates review" do
   scenario "authenticated user cannot edit review created by another user" do
     user = FactoryGirl.create(:user)
     art = FactoryGirl.create(:art)
-    review = FactoryGirl.create(:review, art: art)
+    FactoryGirl.create(:review, art: art)
 
     sign_in(user)
     visit art_path(art)
