@@ -1,4 +1,6 @@
 class ArtsController < ApplicationController
+  before_action :authorize_user, except: [:index, :show]
+
   def index
     @arts = Art.all.order("id ASC")
   end
@@ -57,5 +59,11 @@ class ArtsController < ApplicationController
       :category,
       :artist
     )
+  end
+
+  def authorize_user
+    if !user_signed_in?
+      raise ActionController::RoutingError.new("Not Found")
+    end
   end
 end
