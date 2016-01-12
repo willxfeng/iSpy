@@ -2,7 +2,6 @@ require 'rails_helper'
 feature "User adds street art" do
   before :each do
     user = FactoryGirl.create(:user)
-    # new_art = FactoryGirl.create(:art)
     visit root_path
     click_link "Sign In!"
     fill_in 'Email', with: user.email
@@ -46,6 +45,14 @@ feature "User adds street art" do
     expect(page).to have_content "Location can't be blank."
     expect(page).to have_content "Description can't be blank."
     expect(page).to have_content "Category can't be blank"
+  end
+
+  scenario "user is not signed in and cannot add art" do
+    click_on 'Sign Out'
+    expect(page).to_not have_content 'Sign Out'
+    click_on 'Add New Street Art'
+    add_art
+    expect(page).to have_content "User can't be blank"
   end
 end
 

@@ -3,7 +3,6 @@ feature "User adds review street art" do
   scenario "user successfully fills out form and adds new review" do
     user = FactoryGirl.create(:user)
     new_art = FactoryGirl.create(:art)
-    
     visit root_path
     click_link "Sign In!"
     fill_in 'Email', with: user.email

@@ -22,6 +22,13 @@
   </div>
 <% end %>
 
+<% if @art.user == current_user %>
+  <div class="art_actions">
+    <%= link_to "Edit this Entry", edit_art_path(@art) %><br>
+    <%= link_to "Delete this entry", art_path(@art), method: :delete %><br>
+  </div>
+<% end %>
+
 <ul class="art-details">
   <li><%= @art.location %></li>
   <li><%= @art.description %></li>
@@ -31,6 +38,9 @@
   <li><%= @art.category %></li>
 </ul>
 
+<%= link_to "Add New Review", new_art_review_path(@art)%><br>
+<%= link_to "Home", arts_path %>
+
 <% @reviews.each do |review|  %>
   <div class="review">
     <p>Comments: <%= review.body %></p>
@@ -38,14 +48,7 @@
     <% if review.user == current_user %>
       <%= link_to "Edit this Review", edit_review_path(review)%><br>
       <%= link_to "Delete this Review", art_review_path(@art, review), method: :delete %><br>
+      <br>
     <% end %>
   </div>
 <% end %>
-
-<br>
-<div class="art_actions">
-  <%= link_to "Add New Review", new_art_review_path(@art)%><br>
-  <%= link_to "Edit this Entry", edit_art_path(@art) %><br>
-  <%= link_to "Delete this entry", art_path(@art), method: :delete %><br>
-  <%= link_to "Home", arts_path %>
-</div>
