@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  has_many :arts
+  has_many :reviews
+
   mount_uploader :profile_photo, ProfilePhotoUploader
 
   validates :first_name, presence: true
@@ -14,5 +15,9 @@ class User < ActiveRecord::Base
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def admin?
+    role == 'admin'
   end
 end

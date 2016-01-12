@@ -1,4 +1,6 @@
 class ArtsController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show]
+
   def index
     @arts = Art.all.order("id ASC")
   end
@@ -16,6 +18,7 @@ class ArtsController < ApplicationController
 
   def create
     @art = Art.new(art_params)
+    @art.user = current_user
     if @art.save
       flash[:notice] = "Art successfully added!"
       respond_to { |format| format.html { redirect_to art_path(@art) } }
@@ -27,6 +30,9 @@ class ArtsController < ApplicationController
 
   def edit
     @art = Art.find(params[:id])
+    unless @art.user == current_user
+      raise_error
+    end
   end
 
   def update

@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show]
+
   def new
     @art = Art.find(params[:art_id])
     @review = Review.new
@@ -18,6 +20,9 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    unless @review.user == current_user
+      raise_error
+    end
     @review.art = @art
   end
 

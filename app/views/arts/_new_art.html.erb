@@ -1,0 +1,15 @@
+<%= form_for [@art, @photo] do |f| %>
+  <div class="upload-image">
+    <%= f.label :art_photo, 'Photo' %>
+    <%= f.file_field :art_photo %>
+  </div>
+
+  <div class="upload-image">
+    <%= f.label :caption, 'Caption' %>
+    <%= f.text_area :caption %>
+  </div>
+
+  <div class="upload-image">
+    <%= f.submit class: "button round form-button" %>
+  </div>
+<% end %>

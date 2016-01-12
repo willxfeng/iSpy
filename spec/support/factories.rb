@@ -14,6 +14,7 @@ FactoryGirl.define do
     by the mayor's mural crew."
     artist "Unknown"
     category "mural"
+    user
   end
 
   factory :review do
