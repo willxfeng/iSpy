@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:edit, :update]
 
+  namespace :admin do
+    resources :users, only: [:index]
+  end
+
   devise_for :users, controllers: {
     registrations: "registrations",
     sessions: "sessions"
