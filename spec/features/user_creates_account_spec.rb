@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'user can create an account' do
 
   before :each do

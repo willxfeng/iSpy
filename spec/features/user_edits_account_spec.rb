@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'user edits account' do
 
   before :each do

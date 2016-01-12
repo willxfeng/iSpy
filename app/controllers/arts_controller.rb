@@ -1,4 +1,6 @@
 class ArtsController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show]
+
   def index
     @arts = Art.all.order("id ASC")
   end
@@ -28,6 +30,9 @@ class ArtsController < ApplicationController
 
   def edit
     @art = Art.find(params[:id])
+    unless @art.user == current_user
+      raise_error
+    end
   end
 
   def update

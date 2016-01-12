@@ -1,15 +1,12 @@
-require 'rails_helper'
 feature "User adds review street art" do
-  scenario "user successfully fills out form and adds new review" do
-    user = FactoryGirl.create(:user)
-    new_art = FactoryGirl.create(:art)
-    visit root_path
-    click_link "Sign In!"
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
 
-    click_button 'Sign In'
-    visit art_path(new_art)
+  let(:user) { FactoryGirl.create(:user) }
+  let(:art) { FactoryGirl.create(:art) }
+
+  scenario "authenticated user successfully fills out form, adds new review" do
+    sign_in(user)
+    visit art_path(art)
+
     click_on "Add New Review"
 
     fill_in "body", with: "This was the greatest mural I have ever seen!"
@@ -22,16 +19,9 @@ feature "User adds review street art" do
   end
 
   scenario "user unsuccessfully fills out form and remains on form page" do
-    user = FactoryGirl.create(:user)
-    new_art = FactoryGirl.create(:art)
+    sign_in(user)
+    visit art_path(art)
 
-    visit root_path
-    click_link "Sign In!"
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button "Sign In"
-
-    visit art_path(new_art)
     click_on "Add New Review"
 
     fill_in "body", with: "Cool"
@@ -41,4 +31,12 @@ feature "User adds review street art" do
     expect(page).to_not have_content "Cool"
     expect(ActionMailer::Base.deliveries.count).to eq(0)
   end
+
+  scenario "unauthenticated user cannot add review" do
+    visit art_path(art)
+
+    expect(page).to_not have_link "Add New Review"
+    expect(page).to have_link "Sign in to add a new review!"
+  end
+
 end

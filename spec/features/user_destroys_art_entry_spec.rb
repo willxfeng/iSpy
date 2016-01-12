@@ -1,17 +1,26 @@
 feature "user deletes an entry" do
-  scenario "user deletes an entry" do
-    user = FactoryGirl.create(:user)
-    new_art = FactoryGirl.create(:art, user_id: user.id)
-    visit root_path
-    click_link "Sign In!"
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
 
-    click_button 'Sign In'
-    visit art_path(new_art)
+  let(:user) { FactoryGirl.create(:user) }
+  let(:art) { FactoryGirl.create(:art) }
 
-    click_on "Delete this entry"
+  scenario "authenticated user deletes an entry" do
+    sign_in(art.user)
+    visit art_path(art)
+    click_on "Delete this Entry"
 
     expect(page).to_not have_content "Chinatown"
+  end
+
+  scenario "unauthenticated user cannot delete art entry" do
+    visit art_path(art)
+
+    expect(page).to_not have_link "Delete this entry"
+  end
+
+  scenario "authenticated user cnanot delete another user's art entry" do
+    sign_in(user)
+    visit art_path(art)
+
+    expect(page).to_not have_link "Delete this entry"
   end
 end

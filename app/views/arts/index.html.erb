@@ -47,7 +47,13 @@
 </div>
 
 <div class="row">
-  <div class="medium-5 columns new"><h3><%= link_to "Add New Street Art", new_art_path %></h3></div>
+  <div class="medium-5 columns new"><h3>
+    <% if user_signed_in? %>
+      <%= link_to "Add New Street Art", new_art_path %>
+    <% else %>
+      <%= link_to "Sign in to add new street art!", new_user_session_path %>
+    <% end %>
+  </h3></div>
   <div class="medium-5 columns all-art"><h3><%= link_to "View All Art", new_art_path %></h3></div>
 </div>
 

@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe User do
+  it { should have_many :arts }
+  it { should have_many :reviews }
+
   it { should have_valid(:first_name).when("John", "Sally") }
   it { should_not have_valid(:first_name).when(nil, "") }
 
@@ -22,13 +25,22 @@ describe User do
     expect(user.errors[:password_confirmation]).to_not be_blank
   end
 
+  let(:user) { User.new(first_name: 'Big', last_name: 'Bird') }
+
   context "#full_name" do
     it "returns full name" do
-      user = User.new(
-        first_name: 'Big',
-        last_name: 'Bird')
-
       expect(user.full_name).to eq('Big Bird')
+    end
+  end
+
+  context "#admin?" do
+    it "returns true for admin" do
+      user.role = 'admin'
+      expect(user.admin?).to be true
+    end
+
+    it "returns false for member" do
+      expect(user.admin?).to be false
     end
   end
 end

@@ -1,50 +1,49 @@
 feature "User updates art entry" do
-  scenario "user visits update page" do
-    user = FactoryGirl.create(:user)
-    new_art = FactoryGirl.create(:art, user_id: user.id)
-    visit root_path
-    click_link "Sign In!"
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
 
-    click_button 'Sign In'
-    visit art_path(new_art)
+  let(:user) { FactoryGirl.create(:user) }
+  let(:art) { FactoryGirl.create(:art) }
+  
+  scenario "user visits update page" do
+    sign_in(art.user)
+    visit art_path(art)
+
     click_on "Edit this Entry"
 
     expect(page).to have_button "Update"
   end
-  scenario "user successfully fills out update form" do
-    user = FactoryGirl.create(:user)
-    new_art = FactoryGirl.create(:art, user_id: user.id)
-    visit root_path
-    click_link "Sign In!"
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
 
-    click_button 'Sign In'
+  scenario "authenticated user successfully fills out update form" do
+    sign_in(art.user)
+    visit art_path(art)
 
-    visit art_path(new_art)
     click_on "Edit this Entry"
     fill_in "art_artist", with: "Another Artist"
     click_on "Update Art"
 
     expect(page).to have_content "Another"
   end
+
   scenario "user unsuccessfully fills out update form" do
-    user = FactoryGirl.create(:user)
-    new_art = FactoryGirl.create(:art, user_id: user.id)
-    visit root_path
-    click_link "Sign In!"
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    sign_in(art.user)
+    visit art_path(art)
 
-    click_button 'Sign In'
-
-    visit art_path(new_art)
     click_on "Edit this Entry"
     fill_in "art_location", with: " "
     click_on "Update Art"
 
     expect(page).to have_content "You must fill out all of the required fields"
+  end
+
+  scenario "unauthenticated user is unable to edit art entry" do
+    visit art_path(art)
+
+    expect(page).to_not have_link "Edit this entry"
+  end
+
+  scenario "authenticated user cannot edit entry created by another user" do
+    sign_in(user)
+    visit art_path(art)
+
+    expect(page).to_not have_link "Edit this entry"
   end
 end

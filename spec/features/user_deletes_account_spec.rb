@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'user deletes account' do
   scenario 'successfully deletes account' do
     user = FactoryGirl.create(:user)

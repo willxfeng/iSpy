@@ -1,17 +1,11 @@
-require 'rails_helper'
 feature "User adds street art" do
-  before :each do
-    user = FactoryGirl.create(:user)
-    visit root_path
-    click_link "Sign In!"
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
 
-    click_button 'Sign In'
-    click_link 'Add New Street Art'
-  end
+  let(:user) { FactoryGirl.create(:user) }
+  let(:art) { FactoryGirl.create(:art) }
 
   scenario "user successfully fills out form and adds new photo" do
+    sign_in(user)
+    click_link 'Add New Street Art'
     add_art
 
     expect(page).to have_content "Chinatown Community Mural"
@@ -29,6 +23,8 @@ feature "User adds street art" do
   end
 
   scenario "user uploads non-image file" do
+    sign_in(user)
+    click_link 'Add New Street Art'
     add_art
 
     attach_file 'Photo', "#{Rails.root}/spec/support/images/text.txt"
@@ -39,6 +35,8 @@ feature "User adds street art" do
   end
 
   scenario "user unsuccessfully fills out form and remains on form page" do
+    sign_in(user)
+    click_link 'Add New Street Art'
     fill_in "art_name", with: "Chinatown"
     click_on "Create Art"
 
@@ -47,12 +45,18 @@ feature "User adds street art" do
     expect(page).to have_content "Category can't be blank"
   end
 
-  scenario "user is not signed in and cannot add art" do
-    click_on 'Sign Out'
-    expect(page).to_not have_content 'Sign Out'
-    click_on 'Add New Street Art'
-    add_art
-    expect(page).to have_content "User can't be blank"
+  scenario "unauthenticated user does not see add art link on index page" do
+    visit root_path
+
+    expect(page).to_not have_link 'Add New Street Art'
+    expect(page).to have_link 'Sign in to add new street art!'
+  end
+
+  scenario "unauthenticated user cannot add photo to art" do
+    visit art_path(art)
+
+    expect(page).to_not have_button 'Create Photo'
+    expect(page).to have_link 'Sign in to add photo'
   end
 end
 
