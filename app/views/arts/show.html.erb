@@ -6,20 +6,10 @@
   </ul>
 </div>
 
-<%= form_for [@art, @photo] do |f| %>
-  <div class="upload-image">
-    <%= f.label :art_photo, 'Photo' %>
-    <%= f.file_field :art_photo %>
-  </div>
-
-  <div class="upload-image">
-    <%= f.label :caption, 'Caption' %>
-    <%= f.text_area :caption %>
-  </div>
-
-  <div class="upload-image">
-    <%= f.submit class: "button round form-button" %>
-  </div>
+<% if user_signed_in? %>
+  <%= render 'new_art' %>
+<% else %>
+  <%= link_to "Sign in to add photo", new_user_session_path %>
 <% end %>
 
 <ul class="art-details">
@@ -35,7 +25,7 @@
     <div class="review">
       <p>Comments: <%= review.body %></p>
       <p> Rating: <%= review.rating %></p>
-      <% if review.user == current_user %>
+      <% if user_signed_in? && review.user == current_user %>
         <%= link_to "Edit this Review", edit_review_path(review)%><br>
         <%= link_to "Delete this Review", art_review_path(@art, review), method: :delete %><br>
       <% end %>
@@ -44,8 +34,16 @@
 
   <br>
   <div class="art_actions">
-      <%= link_to "Add New Review", new_art_review_path(@art)%><br>
-      <%= link_to "Edit this Entry", edit_art_path %><br>
-      <%= link_to "Delete this entry", art_path(@art), method: :delete %><br>
-      <%= link_to "Home", arts_path %>
+    <% if user_signed_in? %>
+      <%= link_to "Add New Review", new_art_review_path(@art)%>
+    <% else %>
+      <%= link_to 'Sign in to add a new review!', new_user_session_path %>
+    <% end %>
+    <br>
+    <% if user_signed_in? && @art.user == current_user%>
+      <%= link_to "Edit this Entry", edit_art_path(@art)%><br>
+      <%= link_to "Delete this Entry", art_path(@art), method: :delete %>
+    <% end %>
+    <br>
+    <%= link_to "Home", arts_path %>
   </div>

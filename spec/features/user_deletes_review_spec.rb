@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature "User deletes review" do
   scenario "User deletes review" do
     user = FactoryGirl.create(:user)

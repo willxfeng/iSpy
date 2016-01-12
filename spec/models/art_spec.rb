@@ -1,6 +1,10 @@
 require 'rails_helper'
+
 describe Art do
   it { should have_many :photos }
+  it { should have_many :reviews }
+
+  it { should belong_to :user }
 
   it { should have_valid(:name).when("Nice Mural", "Broadway St. Tag") }
   it { should_not have_valid(:name).when(nil, "") }

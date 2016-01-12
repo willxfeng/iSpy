@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show]
+
   def new
     @art = Art.find(params[:art_id])
     @review = Review.new
@@ -18,6 +20,9 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    unless @review.user == current_user
+      raise_error
+    end
     @review.art = @art
   end
 
@@ -42,5 +47,15 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:body, :rating, :art_id)
+  end
+
+  def authenticate_user
+    if !user_signed_in?
+      raise_error
+    end
+  end
+
+  def raise_error
+    raise ActionController::RoutingError.new("Not Found")
   end
 end

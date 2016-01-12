@@ -1,5 +1,5 @@
 class ArtsController < ApplicationController
-  before_action :authorize_user, except: [:index, :show]
+  before_action :authenticate_user, except: [:index, :show]
 
   def index
     @arts = Art.all.order("id ASC")
@@ -18,6 +18,7 @@ class ArtsController < ApplicationController
 
   def create
     @art = Art.new(art_params)
+    @art.user = current_user
     if @art.save
       flash[:notice] = "Art successfully added!"
       respond_to { |format| format.html { redirect_to art_path(@art) } }
@@ -29,6 +30,9 @@ class ArtsController < ApplicationController
 
   def edit
     @art = Art.find(params[:id])
+    unless @art.user == current_user
+      raise_error
+    end
   end
 
   def update
@@ -61,9 +65,13 @@ class ArtsController < ApplicationController
     )
   end
 
-  def authorize_user
+  def authenticate_user
     if !user_signed_in?
-      raise ActionController::RoutingError.new("Not Found")
+      raise_error
     end
+  end
+
+  def raise_error
+    raise ActionController::RoutingError.new("Not Found")
   end
 end
