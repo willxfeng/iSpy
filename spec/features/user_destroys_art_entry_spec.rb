@@ -1,17 +1,15 @@
 feature "user deletes an entry" do
-  let(:art) do
-    Art.create(
-      name: "Chinatown Community Mural",
-      location: "Surface Rd & Beach St",
-      description: "Chinese community mural commissioned
-      by the mayor's mural crew.",
-      artist: "Made up Artist",
-      category: "Graffiti"
-    )
-  end
-
   scenario "user deletes an entry" do
-    visit "/arts/#{art.id}"
+    user = FactoryGirl.create(:user)
+    new_art = FactoryGirl.create(:art, user_id: user.id)
+    visit root_path
+    click_link "Sign In!"
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+
+    click_button 'Sign In'
+    visit art_path(new_art)
+
     click_on "Delete this entry"
 
     expect(page).to_not have_content "Chinatown"

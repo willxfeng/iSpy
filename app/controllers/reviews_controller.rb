@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
     @review = @art.reviews.new(review_params)
     @review.user = current_user
     if @review.save
+      ReviewMailer.new_review(@review).deliver_later
       redirect_to art_path(@art)
     else
       flash[:errors] = @review.errors.full_messages.join(". ")

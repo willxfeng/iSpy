@@ -16,6 +16,7 @@ class ArtsController < ApplicationController
 
   def create
     @art = Art.new(art_params)
+    @art.user = current_user
     if @art.save
       flash[:notice] = "Art successfully added!"
       respond_to { |format| format.html { redirect_to art_path(@art) } }

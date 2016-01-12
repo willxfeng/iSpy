@@ -1,7 +1,14 @@
 require 'rails_helper'
 feature "User adds street art" do
   before :each do
+    user = FactoryGirl.create(:user)
+    # new_art = FactoryGirl.create(:art)
     visit root_path
+    click_link "Sign In!"
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+
+    click_button 'Sign In'
     click_link 'Add New Street Art'
   end
 

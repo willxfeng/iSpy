@@ -2,14 +2,7 @@ feature "User updates review" do
 
   before :each do
 
-    new_art = Art.create(
-      name: "Chinatown Community Mural",
-      location: "Surface Rd & Beach St",
-      description: "Chinese community mural commissioned
-      by the mayor's mural crew.",
-      artist: "Made up Artist",
-      category: "Graffiti"
-    )
+    new_art = FactoryGirl.create(:art)
     user = FactoryGirl.create(:user)
     visit root_path
     click_link "Sign In!"
