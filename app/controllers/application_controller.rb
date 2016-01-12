@@ -16,4 +16,14 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.for(:account_update) << :profile_photo
   end
+
+  def authenticate_user
+    if !user_signed_in?
+      raise_error
+    end
+  end
+
+  def raise_error
+    raise ActionController::RoutingError.new("Not Found")
+  end
 end

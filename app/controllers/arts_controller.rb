@@ -64,14 +64,4 @@ class ArtsController < ApplicationController
       :artist
     )
   end
-
-  def authenticate_user
-    if !user_signed_in?
-      raise_error
-    end
-  end
-
-  def raise_error
-    raise ActionController::RoutingError.new("Not Found")
-  end
 end
