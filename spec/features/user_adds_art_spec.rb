@@ -1,4 +1,5 @@
 feature "User adds street art" do
+
   let(:user) { FactoryGirl.create(:user) }
   let(:art) { FactoryGirl.create(:art) }
 

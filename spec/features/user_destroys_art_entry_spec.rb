@@ -1,4 +1,5 @@
 feature "user deletes an entry" do
+
   let(:user) { FactoryGirl.create(:user) }
   let(:art) { FactoryGirl.create(:art) }
 
