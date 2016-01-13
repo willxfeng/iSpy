@@ -3,7 +3,7 @@ feature 'admin sees all registered users' do
     admin = FactoryGirl.create(:user, role: 'admin')
     user = FactoryGirl.create(:user)
     sign_in(admin)
-    visit admin_users_path
+    click_link 'All Users'
 
     expect(page).to have_content(user.email)
   end

@@ -25,7 +25,7 @@
     <div class="review">
       <p>Comments: <%= review.body %></p>
       <p> Rating: <%= review.rating %></p>
-      <% if user_signed_in? && review.user == current_user %>
+      <% if user_signed_in? && (current_user.admin? || review.user == current_user) %>
         <%= link_to "Edit this Review", edit_review_path(review)%><br>
         <%= link_to "Delete this Review", art_review_path(@art, review), method: :delete %><br>
       <% end %>
@@ -40,7 +40,7 @@
       <%= link_to 'Sign in to add a new review!', new_user_session_path %>
     <% end %>
     <br>
-    <% if user_signed_in? && @art.user == current_user%>
+    <% if user_signed_in? && (current_user.admin? || @art.user == current_user) %>
       <%= link_to "Edit this Entry", edit_art_path(@art)%><br>
       <%= link_to "Delete this Entry", art_path(@art), method: :delete %>
     <% end %>
