@@ -2,7 +2,7 @@ class ArtsController < ApplicationController
   before_action :authenticate_user, except: [:index, :show]
 
   def index
-    @arts = Art.all.order("id ASC").page params[:page]
+    @arts = Art.all.order("id ASC").page(params[:page])
   end
 
   def new
