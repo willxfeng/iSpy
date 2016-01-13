@@ -4,9 +4,15 @@
 <title>iSpy</title>
 </head>
 
-
 <body>
 <h1> Featured Street Art </h1>
+
+<% form_tag arts_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
 
 <div class="orbit-container">
 <ul class="example-orbit" data-orbit>

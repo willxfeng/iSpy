@@ -12,4 +12,12 @@ class Art < ActiveRecord::Base
   validates :user, presence: true
 
   accepts_nested_attributes_for :photos, allow_destroy: true
+
+  def self.search(search)
+    if search
+      find(:id, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      find(:id)
+    end
+  end
 end
