@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe Art do
   it { should have_many :photos }
   it { should have_many :reviews }
