@@ -6,11 +6,11 @@ class Art < ActiveRecord::Base
     }
   }
 
+  # max_paginates_per 1
+
   belongs_to :user
   has_many :reviews
   has_many :photos
-
-  belongs_to :user
 
   validates :name, presence: true
   validates :location, presence: true
