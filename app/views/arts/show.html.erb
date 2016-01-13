@@ -32,19 +32,23 @@
           art_review_path(@art, review),
           method: :delete %><br>
       <% else %>
-        <%= button_to pluralize(review.votes.where(upvote: true).count,
-          "Upvote"),
-          art_path(@art),
-          method: 'get',
-          class: 'votes',
-          id: "up-vote-#{review.id}" %>
-        <%= button_to pluralize(review.votes.where(upvote: false).count,
-          "Downvote"),
-          art_path(@art),
-          method: 'get',
-          class: 'votes',
-          id: "down-vote-#{review.id}" %>
+        <div class="vote-buttons">
+          <%= button_to pluralize(review.votes.where(upvote: true).count,
+            "Upvote"),
+            art_path(@art),
+            method: 'get',
+            class: 'votes',
+            id: "upvote-#{review.id}" %>
+          <%= button_to pluralize(review.votes.where(upvote: false).count,
+            "Downvote"),
+            art_path(@art),
+            method: 'get',
+            class: 'votes',
+            id: "downvote-#{review.id}" %>
+        </div>
       <% end %>
+    <% else %>
+      <%= link_to 'Sign in to upvote or downvote this review!', new_user_session_path %>
     <% end %>
   </div>
 <% end %>
