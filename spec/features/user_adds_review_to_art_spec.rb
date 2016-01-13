@@ -9,9 +9,9 @@ feature "User adds review street art" do
 
     click_on "Add New Review"
 
-    fill_in "body", with: "This was the greatest mural I have ever seen!"
-    fill_in "rating", with: 5
-    click_on "Add"
+    fill_in "Comments", with: "This was the greatest mural I have ever seen!"
+    fill_in "Rating", with: 5
+    click_on "Create Review"
 
     expect(page).to have_content "This was the greatest mural I have ever seen!"
     expect(page).to have_content "5"
@@ -24,8 +24,8 @@ feature "User adds review street art" do
 
     click_on "Add New Review"
 
-    fill_in "body", with: "Cool"
-    click_on "Add"
+    fill_in "Comments", with: "Cool"
+    click_on "Create Review"
 
     expect(page).to have_content "can't be blank"
     expect(page).to_not have_content "Cool"

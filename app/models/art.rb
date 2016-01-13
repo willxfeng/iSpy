@@ -6,8 +6,6 @@ class Art < ActiveRecord::Base
     }
   }
 
-  # max_paginates_per 1
-
   belongs_to :user
   has_many :reviews
   has_many :photos

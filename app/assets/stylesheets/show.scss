@@ -1,0 +1,43 @@
+@import "foundation_and_overrides";
+@import "index";
+
+.art-details {
+  margin: auto;
+  margin-bottom: 35px;
+  text-align: center;
+  display: block;
+  width: fit-content;
+  align-content: center;
+  border: 2px solid #ffd700;
+  background-color: #ffa500;
+  li {
+    list-style-type: none;
+    font-size: 1.5em;
+    color: #088da5;
+  }
+}
+
+.review {
+  margin: 10px;
+  border: solid black;
+  .review-content {
+    list-style-type: none;
+  }
+  .user-specific-content {
+    list-style-type: none;
+    margin-right: 5px;
+    li {
+      text-align: right;
+    }
+  }
+}
+
+.art-buttons {
+  list-style-type: none;
+  li {
+    display: inline-block;
+  }
+}
+.sign-in-to-add-photo {
+  margin-left: 15px;
+}
