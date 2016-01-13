@@ -5,15 +5,16 @@ feature "User searches for a specific piece of art by name" do
 
   scenario "user enters name in search bar and views search results" do
     visit "/"
-    fill_in "search", with: art.name
+    fill_in "query", with: art.name
     click_on "Search"
 
     expect(page).to have_content "#{art.name}"
+    expect(page).to_not have_content "Sorry, no results"
   end
 
   scenario "user enters art name that does not match any existing art names" do
     visit "/"
-    fill_in "search", with: "Fake Art"
+    fill_in "query", with: "Fake Art"
     click_on "Search"
 
     expect(page).to_not have_content "#{art.name}"

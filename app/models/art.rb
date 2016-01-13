@@ -1,4 +1,11 @@
 class Art < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_name, against: :name, using: {
+    tsearch: {
+      prefix: true
+    }
+  }
+
   belongs_to :user
   has_many :reviews
   has_many :photos
@@ -12,12 +19,4 @@ class Art < ActiveRecord::Base
   validates :user, presence: true
 
   accepts_nested_attributes_for :photos, allow_destroy: true
-
-  def self.search(search)
-    if search
-      find(:id, :conditions => ['name LIKE ?', "%#{search}%"])
-    else
-      find(:id)
-    end
-  end
 end
