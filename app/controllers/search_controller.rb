@@ -1,11 +1,11 @@
 class SearchController < ApplicationController
   def index
-    if Art.where("name ILIKE ?", "%#{params[:query]}%")
-      @arts = Art.search_by_name(params[:query])
-      # binding.pry
-    else
+    if params[:query]
+      @arts = Art.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+
+    if @arts.empty? || params[:query].empty?
       flash[:notice] = "Sorry, no results."
-      @arts = Art.all
     end
   end
 end
