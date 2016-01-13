@@ -2,7 +2,7 @@ class ArtsController < ApplicationController
   before_action :authenticate_user, except: [:index, :show]
 
   def index
-    @arts = Art.all.order("id ASC")
+    @arts = Art.all.order("id ASC").page(params[:page])
   end
 
   def new
@@ -13,7 +13,7 @@ class ArtsController < ApplicationController
     @art = Art.find(params[:id])
     @photos = @art.photos
     @photo = Photo.new
-    @reviews = @art.reviews
+    @reviews = @art.reviews.page(params[:page])
   end
 
   def create

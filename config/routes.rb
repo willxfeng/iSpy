@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     registrations: "registrations",
     sessions: "sessions"
   }
+
+  get '/search' => 'search#index'
 end
