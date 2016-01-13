@@ -5,7 +5,12 @@
     </li>
 
     <li class="toggle-topbar menu-icon"><a href="/"><span>iSpy</span></a></li>
-
+      <%= form_tag("/search", method: 'get') do %>
+        <p>
+          <%= text_field_tag :query, params[:query] %>
+          <%= submit_tag "Search", :name => nil %>
+        </p>
+      <% end %>
   </ul>
 
   <section class="top-bar-section">
