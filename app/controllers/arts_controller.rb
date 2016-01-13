@@ -13,7 +13,7 @@ class ArtsController < ApplicationController
     @art = Art.find(params[:id])
     @photos = @art.photos
     @photo = Photo.new
-    @reviews = @art.reviews
+    @reviews = @art.reviews.page(params[:page])
   end
 
   def create
