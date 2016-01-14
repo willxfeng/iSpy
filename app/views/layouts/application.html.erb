@@ -10,6 +10,9 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300italic' rel='stylesheet' type='text/css'>
+
+
   </head>
 
   <body>
@@ -24,6 +27,21 @@
     </div>
 
     <%= yield %>
+
+    <footer class="footer">
+      <div class="row">
+        <div class="small-12 columns">
+          <p class="slogan">iSpy: Street Art in Review</p>
+          <p class="links">
+            <a href="/">Home</a>
+            <a href="/index">View All Art</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Add Art</a>
+          </p>
+          <!-- <p class="copywrite">Copywrite not copypwrite © 2015</p> -->
+        </div>
+      </div>
+    </footer>
 
   </body>
 </html>
