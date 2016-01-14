@@ -2,6 +2,7 @@
 
 $font-color: #088da5;
 $bg-color: #ECECEA;
+$black: #000000;
 
 body {
   background-image: url(/assets/new_year_background.png);
@@ -12,7 +13,7 @@ body {
 
 .slick-slide img {
   height: 800px;
-  width: 100%;
+  width: auto;
   margin: auto;
 }
 
@@ -27,6 +28,10 @@ p {
 font-size: 24px;
 }
 
+h2 {
+  text-decoration: underline;
+}
+
 .about {
   border: 3px solid $bg-color;
   text-align: center;
@@ -38,23 +43,21 @@ font-size: 24px;
 
 
 .new {
-  border: 1px solid #fff;
+  border: 1px solid $black;
   color: $font-color;
   margin: 10px;
   padding: 5px;
   text-align: center;
+  border-radius:10px;
 }
 
-// .orbit-container {
-//   height: 400px;
-// }
-
 .all-art {
-  border: 1px solid #fff;
+  border: 1px solid $black;
   color: $font-color;
   margin: 10px;
   padding: 5px;
   text-align: center;
+  border-radius:10px;
 }
 
 
@@ -81,7 +84,7 @@ a {
   background-color: #292c2f;
   text-align: center;
   font-size: 1.2rem;
-  padding: 4rem; }
+  padding: 2rem; }
   .footer p.slogan {
     color: #8d9093;
     font-size: 1.8rem;
