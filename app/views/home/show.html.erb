@@ -1,4 +1,3 @@
-<body>
 <h1> Featured Street Art </h1>
 
 <div class="orbit-container">
@@ -52,14 +51,13 @@
 
 <h1> View The Street Art Gallery </h1>
 
-  <ul class="medium-block-grid-3">
-    <% @arts.each do |art| %>
-      <li>
-        <% if art.photos.first %>
-          <%= link_to image_tag(art.photos.first.art_photo), art_path(art), class: 'index-photo' %>
-        <% end %>
-        <span class="label"><%= link_to art.name, art_path(art) %></span>
-      </li>
-    <% end %>
-  </ul>
-</body>
+<ul class="medium-block-grid-3">
+  <% @arts.each do |art| %>
+    <li>
+      <% if art.photos.first %>
+        <%= link_to image_tag(art.photos.first.art_photo), art_path(art), class: 'index-photo' %>
+      <% end %>
+      <span class="label"><%= link_to art.name, art_path(art) %></span>
+    </li>
+  <% end %>
+</ul>
