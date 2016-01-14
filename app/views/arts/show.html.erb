@@ -25,23 +25,36 @@
   </ul>
 </div>
 
-  <% @reviews.each do |review|  %>
-    <div class="review">
+<% @reviews.each do |review|  %>
+  <div class="review">
       <% if user_signed_in? && review.user == current_user %>
-      <ul class="user-specific-content">
-        <li><%= link_to "Edit this Review", edit_review_path(review), class: "tiny button round form-button edit-review"%></li>
-        <li><%= link_to "Delete this Review", art_review_path(@art, review), method: :delete, class: "tiny button round form-button delete-review" %></li>
-      <% end %>
-     </ul>
-      <ul class="review-content">
-        <li><strong>Review by:</strong> <%= review.user.first_name %> <%= review.user.last_name %> </li>
-        <li><strong>Rating:</strong> <%= review.rating %></li>
-        <li><strong>Comments:</strong> <%= review.body %></li>
-      </ul>
-    </div>
-  <% end %>
-
-  <br>
+          <ul class="user-specific-content">
+            <li><%= link_to "Edit this Review", edit_review_path(review), class: "tiny button round form-button edit-review"%></li>
+            <li><%= link_to "Delete this Review", art_review_path(@art, review), method: :delete, class: "tiny button round form-button delete-review" %></li>
+          </ul>
+        <div class="vote-buttons">
+          <%= button_to pluralize(review.votes.where(upvote: true).count,
+            "Upvote"),
+            art_path(@art),
+            method: 'get',
+            class: 'votes',
+            id: "upvote-#{review.id}" %>
+          <%= button_to pluralize(review.votes.where(upvote: false).count,
+            "Downvote"),
+            art_path(@art),
+            method: 'get',
+            class: 'votes',
+            id: "downvote-#{review.id}" %>
+        </div>
+    <% else %>
+      <%= link_to 'Sign in to upvote or downvote this review!', new_user_session_path %>
+    <% end %>
+    <ul class="review-content">
+      <li><strong>Review by:</strong> <%= review.user.first_name %> <%= review.user.last_name %> </li>
+      <li><strong>Rating:</strong> <%= review.rating %></li>
+      <li><strong>Comments:</strong> <%= review.body %></li>
+    </ul>
+  </div>
   <div class="art_actions">
     <ul class="art-buttons">
       <% if user_signed_in? %>
@@ -53,7 +66,10 @@
         <li><%= link_to "Edit this Entry", edit_art_path(@art), class: "small button round form-button" %></li>
         <li><%= link_to "Delete this Entry", art_path(@art), method: :delete, class: "small button round form-button" %></li>
       <% end %>
-      <li><%= link_to "Home", arts_path, class: "small button round form-button" %></li>
+      <li><%= link_to "Home", root_path, class: "small button round form-button" %></li>
     </ul>
-  </div>
-  <%= paginate @reviews %>
+<% end %>
+
+<%= paginate @reviews %>
+
+<%= javascript_include_tag "show" %>
