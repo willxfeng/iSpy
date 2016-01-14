@@ -56,7 +56,7 @@ feature "User adds street art" do
     visit art_path(art)
 
     expect(page).to_not have_button 'Create Photo'
-    expect(page).to have_link 'Sign in to add photo'
+    expect(page).to have_link 'Sign in to add a photo'
   end
 end
 
