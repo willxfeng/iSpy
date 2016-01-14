@@ -6,13 +6,16 @@
   </ul>
 </div>
 
-<% if user_signed_in? %>
-  <div class="photo-form">
-    <%= render 'new_art' %>
+<div class="row">
+  <div class="small-6 small-centered columns border photo-form">
+    <% if user_signed_in? %>
+      <h2>Add a Photo</h2>
+      <%= render 'new_art' %>
+    <% else %>
+      <%= link_to "Sign in to add a photo", new_user_session_path, class: "tiny button round form-button sign-in-to-add-photo" %>
+    <% end %>
   </div>
-<% else %>
-  <%= link_to "Sign in to add photo", new_user_session_path, class: "tiny button round form-button sign-in-to-add-photo" %>
-<% end %>
+</div>
 
 <div class="art-details">
   <ul>
