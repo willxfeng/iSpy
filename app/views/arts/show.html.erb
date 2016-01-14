@@ -6,11 +6,16 @@
   </ul>
 </div>
 
-<% if user_signed_in? %>
-  <%= render 'new_art' %>
-<% else %>
-  <%= link_to "Sign in to add photo", new_user_session_path %>
-<% end %>
+<div class="row">
+  <div class="small-6 small-centered columns border">
+    <% if user_signed_in? %>
+      <h2>Add a Photo</h2>
+      <%= render 'new_art' %>
+    <% else %>
+      <%= link_to "Sign in to add a photo", new_user_session_path %>
+    <% end %>
+  </div>
+</div>
 
 <ul class="art-details">
   <li><%= @art.location %></li>
