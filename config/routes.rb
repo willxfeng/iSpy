@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :votes, only: [:create]
   end
 
+  namespace :admin do
+    resources :users, only: [:index, :destroy]
+  end
+
   devise_for :users, controllers: {
     registrations: "registrations",
     sessions: "sessions"

@@ -20,6 +20,9 @@
        </div>
      </li>
       <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <li><%= link_to "All Users", admin_users_path %></li>
+      <% end %>
         <li class="has-dropdown">
          <a href="#">
            <% if current_user.profile_photo? %>

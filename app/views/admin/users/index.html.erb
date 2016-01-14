@@ -1,0 +1,23 @@
+<h1>All Users</h1>
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Email</td>
+    <td>Role</td>
+    <td></td>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td> <%= user.full_name %></td>
+    <td> <%= user.email %></td>
+    <td> <%= user.role %></td>
+    <td>
+      <%= button_to "Delete",
+        admin_user_path(user),
+        method: :delete,
+        id: "delete_#{user.id}" %>
+    </td>
+  </tr>
+  <% end %>
+</table>
