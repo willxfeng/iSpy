@@ -1,57 +1,74 @@
 @import "foundation_and_overrides";
 
 $font-color: #088da5;
-$bg-color: #fff;
+$bg-color: #ececea;
+$black: #000000;
 
 body {
-  background-color: $bg-color;
+  background-image: url("/assets/new_year_background.png");
+  background-repeat: repeat;
+  color: $font-color;
+  text-align: center;
+}
+
+.slick-slide img {
+  height: 800px;
+  margin: auto;
+  width: auto;
 }
 
 h1,
+h2,
 h3 {
   color: $font-color;
   text-align: center;
 }
 
+p {
+  font-size: 24px;
+}
+
+h2 {
+  text-decoration: underline;
+}
+
 .about {
   border: 3px solid $bg-color;
   text-align: center;
-  padding: 5px;
+  font-size: 24px;
+  padding: 2rem;
   margin: 10px;
   color: $font-color;
 }
 
-.recently-reviewed {
-  border: 3px solid $bg-color;
-  color: $font-color;
-  margin: 10px;
-  padding: 5px;
-  text-align: center;
-}
 
 .new {
-  border: 3px solid $bg-color;
+  border: 1px solid $black;
   color: $font-color;
   margin: 10px;
   padding: 5px;
   text-align: center;
+  border-radius: 10px;
 }
 
 .all-art {
-  border: 3px solid $bg-color;
+  border: 1px solid $black;
   color: $font-color;
   margin: 10px;
   padding: 5px;
   text-align: center;
+  border-radius: 10px;
 }
+
 
 .label {
   display: block;
   text-align: center;
+  padding: 3rem;
 }
 
 a {
-  color: $black;
+  color: $font-color;
 }
 
 .nav-img {
@@ -61,3 +78,30 @@ a {
 .pagination {
   text-align: center;
 }
+
+
+.footer {
+  background-color: #292c2f;
+  font-size: 1.2rem;
+  padding: 2rem;
+  text-align: center;}
+  .footer p.slogan {
+    color: #8d9093;
+    font-size: 1.8rem;
+    margin: 0 0 1rem; }
+  .footer p.copywrite {
+    color: #8f9296;
+    font-size: 0.875rem;
+    margin: 0; }
+  .footer .links a {
+    color: #ffffff;
+    font-weight: bold;
+    list-style: none;
+    margin: 0;
+    padding: 3rem 0 2rem;}
+    .footer .links a::after {
+      content: "•";
+      padding: 0 0.4rem 0 0.8rem; }
+    .footer .links a:last-child::after {
+      content: "";
+      padding: 0 0.4rem 0 0.8rem; }

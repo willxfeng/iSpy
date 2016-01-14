@@ -41,6 +41,8 @@ gem 'kaminari'
 
 gem 'pg_search'
 
+gem 'slick_rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
