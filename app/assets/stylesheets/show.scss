@@ -4,30 +4,30 @@
 .art-details {
   margin: auto;
   margin-bottom: 35px;
-  text-align: center;
   display: block;
-  width: fit-content;
-  align-content: center;
-  border: 2px solid #ffd700;
-  background-color: #ffa500;
+  width: 50%;
+  background-color: #088da5;
   li {
     list-style-type: none;
     font-size: 1.5em;
-    color: #088da5;
+    color: white;
+    text-align: center;
   }
 }
 
 .review {
-  margin: 10px;
-  border: solid black;
+  background-color: lighten(#088da5, 60%);
+  border-radius: 10px;
   .review-content {
     list-style-type: none;
+    width: 50%;
   }
   .user-specific-content {
     list-style-type: none;
     margin-right: 5px;
     li {
-      text-align: right;
+      position: relative;
+      float: right;
     }
   }
 }
@@ -40,4 +40,27 @@
 }
 .sign-in-to-add-photo {
   margin-left: 15px;
+}
+
+.edit-review,
+.delete-review {
+  margin-bottom: 5px;
+}
+
+.photo-form {
+  margin-left: 7px;
+}
+
+.caption {
+  width: 50%;
+}
+
+.orbit-caption {
+  margin: 0 auto;
+}
+
+
+.orbit-photo img {
+  width: 960px;
+  margin: 0 auto;
 }

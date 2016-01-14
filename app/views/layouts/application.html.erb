@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300italic' rel='stylesheet' type='text/css'>
 
     <title><%= content_for?(:title) ? yield(:title) : "iSpy" %></title>
 
@@ -14,7 +15,7 @@
 
   <body>
     <%= render "layouts/nav" %>
-    
+
     <h2>
       <% flash.each do |key, value| %>
       <%= value %>

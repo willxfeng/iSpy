@@ -12,11 +12,9 @@
 
     <ul class="right">
       <li class="has-form">
-           <%= form_tag("/search", method: 'get') do %>
-           <p>
-             <%= text_field_tag :query, params[:query] %>
-             <%= submit_tag "Search", :name => nil %>
-           </p>
+         <%= form_tag("/search", method: 'get') do %>
+           <span><%= text_field_tag :query, params[:query] %></span>
+           <span><%= submit_tag "Search", :name => nil %></span>
          <% end %>
      </li>
       <% if user_signed_in? %>
