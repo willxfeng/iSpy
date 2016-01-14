@@ -12,7 +12,6 @@ feature "user votes for review" do
     expect(page).to have_link 'Sign in to upvote or downvote this review!'
   end
 
-
   scenario "authenticated user votes for the first time", js: true do
     skip("js:true tests pass locally, but not on codeship")
     sign_in(user)
@@ -31,7 +30,6 @@ feature "user votes for review" do
     create_and_view_review(art)
 
     click_button "0 Upvotes"
-
     click_button "0 Downvotes"
 
     expect(page).to have_button '0 Upvotes'
@@ -44,8 +42,7 @@ feature "user votes for review" do
     create_and_view_review(art)
 
     click_button "0 Upvotes"
-
-      click_button "1 Upvote"
+    click_button "1 Upvote"
 
     expect(page).to have_button '0 Upvotes'
     expect(page).to have_button '0 Downvotes'

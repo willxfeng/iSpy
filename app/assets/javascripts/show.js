@@ -6,9 +6,9 @@ $(document).ready(function() {
     var rId = this.id.split('-')[1];
 
     var request = $.ajax({
-      method: "POST",
+      method: 'POST',
       url: '/reviews/' + rId + '/votes',
-      data: { new_vote: newVote, r_id: rId }
+      data: { newVote: newVote, rId: rId }
     });
 
     request.done(function(response) {
@@ -16,9 +16,9 @@ $(document).ready(function() {
       var downvoteText = 'Downvote';
 
       if (response.upvotes != 1)
-        upvoteText = 'Upvotes'
+        upvoteText = 'Upvotes';
       if (response.downvotes != 1)
-        downvoteText = 'Downvotes'
+        downvoteText = 'Downvotes';
 
       $('#upvote-' + rId)
         .attr('value', response.upvotes + ' ' + upvoteText);
