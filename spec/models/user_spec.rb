@@ -1,8 +1,7 @@
-require 'rails_helper'
-
 describe User do
   it { should have_many :arts }
   it { should have_many :reviews }
+  it { should have_many :votes }
 
   it { should have_valid(:first_name).when("John", "Sally") }
   it { should_not have_valid(:first_name).when(nil, "") }

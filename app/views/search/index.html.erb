@@ -1,0 +1,9 @@
+<h1>Results</h1>
+
+<ol>
+  <% @arts.each do |art| %>
+    <li>
+      <%= link_to art.name, art_path(art) %>
+    </li>
+  <% end %>
+</ol>

@@ -1,9 +1,16 @@
 class Art < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_name, against: :name, using: {
+    tsearch: {
+      prefix: true
+    }
+  }
+
+  # max_paginates_per 1
+
   belongs_to :user
   has_many :reviews
   has_many :photos
-
-  belongs_to :user
 
   validates :name, presence: true
   validates :location, presence: true

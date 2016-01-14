@@ -1,7 +1,7 @@
 feature "User updates art entry" do
-
   let(:user) { FactoryGirl.create(:user) }
   let(:art) { FactoryGirl.create(:art) }
+
   scenario "user visits update page" do
     sign_in(art.user)
     visit art_path(art)

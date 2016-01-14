@@ -27,6 +27,8 @@ gem 'devise'
 
 gem 'carrierwave'
 
+gem 'fog'
+
 gem 'valid_attribute'
 
 gem 'foundation-rails'
@@ -34,6 +36,12 @@ gem 'foundation-rails'
 gem 'puma'
 
 gem 'cowsay'
+
+gem 'kaminari'
+
+gem 'pg_search'
+
+gem 'slick_rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -52,14 +60,17 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.2'
   gem 'valid_attribute'
   gem 'shoulda'
+  gem 'dotenv-rails'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+end
 
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+group :test do
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :production do

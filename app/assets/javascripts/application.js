@@ -13,6 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require_tree .
+//= require slick
 
 $(function(){ $(document).foundation(); });
+
+$(document).ready(function(){
+  $('.picture-container').slick();
+});

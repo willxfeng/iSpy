@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  root "arts#index"
+  get "home", to: "home#show"
+  root "home#show"
 
   resources :arts do
     resources :reviews, only: [:new, :create, :destroy]
     resources :photos, only: :create
   end
 
-  resources :reviews, only: [:edit, :update]
+  resources :reviews, only: [:edit, :update] do
+    resources :votes, only: [:create]
+  end
 
   namespace :admin do
     resources :users, only: [:index, :destroy]
@@ -16,4 +19,6 @@ Rails.application.routes.draw do
     registrations: "registrations",
     sessions: "sessions"
   }
+
+  get '/search' => 'search#index'
 end
