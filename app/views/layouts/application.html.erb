@@ -18,14 +18,29 @@
   <body>
     <%= render "layouts/nav" %>
 
-
+    <h2>
       <% flash.each do |key, value| %>
       <%= value %>
       <% end %>
 
+    </h2>
 
     <%= yield %>
 
+    <footer class="footer">
+      <div class="row">
+        <div class="small-12 columns">
+          <p class="slogan">iSpy: Street Art in Review</p>
+          <p class="links">
+            <a href="/">Home</a>
+            <a href="/index">View All Art</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Add Art</a>
+          </p>
+          <!-- <p class="copywrite">Copywrite not copypwrite © 2015</p> -->
+        </div>
+      </div>
+    </footer>
 
   </body>
 </html>

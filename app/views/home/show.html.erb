@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>iSpy</title>
+</head>
+
+<body>
+
+<h1> iSpy: Street Art in Review </h1>
+
+  <div class="small-11 small-centered columns">
+    <div class="picture-container">
+        <div>
+          <%= image_tag "/assets/man.jpg" %>
+        </div>
+
+        <div>
+          <%= image_tag "/assets/dublin.jpg" %>
+        </div>
+
+        <div>
+          <%= image_tag "/assets/graffiti" %>
+        </div>
+        <div>
+            <%= image_tag "/assets/city-love-rainbow-nyc.jpg" %>
+        </div>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="small-6 large-centered columns about"><h2>Welcome to iSpy!</h2>
+    <p> We are a group of rag-tag computer programmers who needed a BADASS project to take over the world. Join us in our journey to success. </p></div>
+  </div>
+
+  <div class="row">
+    <div class="medium-5 columns new"><h3>
+      <% if user_signed_in? %>
+      <%= link_to "Add New Street Art", new_art_path %>
+      <% else %>
+        <%= link_to "Sign in to add new street art!", new_user_session_path %>
+      <% end %>
+    </h3></div>
+    <div class="medium-5 columns all-art"><h3><%= link_to "View All Art", new_art_path %></h3></div>
+  </div>
+
+
+<h1> iSpy Gallery </h1>
+  <ul class="medium-block-grid-3">
+    <% @arts[0..5].each do |art| %>
+      <li>
+        <% if art.photos.first %>
+          <%= link_to image_tag(art.photos.first.art_photo), art_path(art), class: 'index-photo' %>
+        <% end %>
+        <span class="label"><%= link_to art.name, art_path(art) %></span>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @arts %>
+
+  <a href="#" class="med button round"> View More</a>
+</body>
