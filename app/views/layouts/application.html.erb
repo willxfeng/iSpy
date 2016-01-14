@@ -11,19 +11,21 @@
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300italic' rel='stylesheet' type='text/css'>
-
-
   </head>
 
   <body>
     <%= render "layouts/nav" %>
 
-    <div class="flash">
-      <ul>
-        <% flash.each do |key, value| %>
-          <li><%= value %></li>
-        <% end %>
-      </ul>
+    <div class="row">
+      <div class="small-6 small-centered column">
+        <div class="flash">
+          <% flash.each do |key, value| %>
+            <div data-alert class="alert-box round <%= key.to_s == 'notice' ? 'success' : 'alert' %>">
+            <%= content_tag :div, value %>
+            <a href="#" class="close">&times;</a>
+          <% end %>
+        </div>
+      </div>
     </div>
 
     <%= yield %>
