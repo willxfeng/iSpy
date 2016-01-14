@@ -1,6 +1,7 @@
 class Review < ActiveRecord::Base
   belongs_to :art
   belongs_to :user
+  has_many :votes
 
   validates :body, presence: true
   validates :rating, presence: true, numericality: {
