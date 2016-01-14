@@ -37,13 +37,13 @@
             "Upvote"),
             art_path(@art),
             method: 'get',
-            class: 'votes',
+            class: 'votes up',
             id: "upvote-#{review.id}" %>
           <%= button_to pluralize(review.votes.where(upvote: false).count,
             "Downvote"),
             art_path(@art),
             method: 'get',
-            class: 'votes',
+            class: 'votes down',
             id: "downvote-#{review.id}" %>
         </div>
     <% else %>
@@ -55,20 +55,21 @@
       <li><strong>Comments:</strong> <%= review.body %></li>
     </ul>
   </div>
-  <div class="art_actions">
-    <ul class="art-buttons">
-      <% if user_signed_in? %>
-        <li><%= link_to "Add New Review", new_art_review_path(@art), class: "small button round form-button"%></li>
-      <% else %>
-        <li><%= link_to 'Sign in to add a new review!', new_user_session_path,  class: "small button round form-button" %></li>
-      <% end %>
-      <% if user_signed_in? && @art.user == current_user%>
-        <li><%= link_to "Edit this Entry", edit_art_path(@art), class: "small button round form-button" %></li>
-        <li><%= link_to "Delete this Entry", art_path(@art), method: :delete, class: "small button round form-button" %></li>
-      <% end %>
-      <li><%= link_to "Home", root_path, class: "small button round form-button" %></li>
-    </ul>
 <% end %>
+<div class="art_actions">
+  <ul class="art-buttons">
+    <% if user_signed_in? %>
+    <li><%= link_to "Add New Review", new_art_review_path(@art), class: "small button round form-button"%></li>
+    <% else %>
+    <li><%= link_to 'Sign in to add a new review!', new_user_session_path,  class: "small button round form-button" %></li>
+    <% end %>
+    <% if user_signed_in? && @art.user == current_user%>
+    <li><%= link_to "Edit this Entry", edit_art_path(@art), class: "small button round form-button" %></li>
+    <li><%= link_to "Delete this Entry", art_path(@art), method: :delete, class: "small button round form-button" %></li>
+    <% end %>
+    <li><%= link_to "Home", root_path, class: "small button round form-button" %></li>
+  </ul>
+</div>
 
 <%= paginate @reviews %>
 
