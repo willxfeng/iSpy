@@ -416,7 +416,6 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   shoulda
   slick_rails
-  spring
   uglifier (>= 1.3.0)
   valid_attribute
   web-console (~> 2.0)

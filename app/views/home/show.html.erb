@@ -45,7 +45,7 @@
 
 <h1> iSpy Gallery </h1>
   <ul class="medium-block-grid-3">
-    <% @arts[0..5].each do |art| %>
+    <% @arts.each do |art| %>
       <li>
         <% if art.photos.first %>
           <%= link_to image_tag(art.photos.first.art_photo), art_path(art), class: 'index-photo' %>
