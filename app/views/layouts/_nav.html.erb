@@ -12,10 +12,12 @@
 
     <ul class="right">
       <li class="has-form">
+        <div class="search-bar">
          <%= form_tag("/search", method: 'get') do %>
            <span><%= text_field_tag :query, params[:query] %></span>
-           <span><%= submit_tag "Search", :name => nil %></span>
+           <span class="search-button"><%= submit_tag "Search", :name => nil %></span>
          <% end %>
+       </div>
      </li>
       <% if user_signed_in? %>
         <li class="has-dropdown">

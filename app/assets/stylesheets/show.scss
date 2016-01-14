@@ -20,12 +20,13 @@
   border-radius: 10px;
   .review-content {
     list-style-type: none;
-    width: 50%;
+    width: 70%;
   }
   .user-specific-content {
     list-style-type: none;
     margin-right: 5px;
     li {
+      margin: 7.5px 5px 0;
       position: relative;
       float: right;
     }
@@ -36,6 +37,7 @@
   list-style-type: none;
   li {
     display: inline-block;
+    margin: 0 5px;
   }
 }
 .sign-in-to-add-photo {
