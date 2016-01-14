@@ -1,4 +1,63 @@
-<h1>The Street Art Gallery</h1>
+
+<html>
+<head>
+<title>iSpy</title>
+</head>
+
+<body>
+
+<h1> Featured Street Art </h1>
+
+<div class="orbit-container">
+<ul class="example-orbit" data-orbit>
+  <li>
+    <img src="https://static.pexels.com/photos/4776/man-sunglasses-art-graffiti.jpg" alt="slide 1" />
+    <div class="orbit-caption">
+      "Hipster Beard" by Anonymous Man. Location: Boston, MA
+    </div>
+  </li>
+  <li class="active">
+    <img src="https://static.pexels.com/photos/2724/art-graffiti-women-wall.jpg" alt="slide 2" />
+    <div class="orbit-caption">
+      "Two Women" by Amazing Artist. Location: New York City, NY
+    </div>
+  </li>
+  <li>
+    <img src="https://static.pexels.com/photos/958/graffiti-wall-street-art.jpg" alt="slide 3" />
+    <div class="orbit-caption">
+      Location: Boston, MA
+    </div>
+  </li>
+  <li>
+    <img src="https://static.pexels.com/photos/6989/city-love-rainbow-nyc.jpg" alt="slide 3" />
+    <div class="orbit-caption">
+      Location: Boston, MA
+    </div>
+  </li>
+
+</ul>
+</div>
+
+<div class="row">
+  <div class="medium-5 columns about"><h3>Welcome to iSpy!</h3>
+  <p> We are a group of rag-tag computer programmers who needed a BADASS project to take over the world. Join us in our journey to success. </p></div>
+  <div class="medium-5 columns recently-reviewed"><h3>Recently Reviewed</h3>
+  <p> This box will contain recently reviewed pieces of art as soon as the logic is done :) </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-5 columns new"><h3>
+    <% if user_signed_in? %>
+      <%= link_to "Add New Street Art", new_art_path %>
+    <% else %>
+      <%= link_to "Sign in to add new street art!", new_user_session_path %>
+    <% end %>
+  </h3></div>
+  <div class="medium-5 columns all-art"><h3><%= link_to "View All Art", arts_path %></h3></div>
+</div>
+
+<h1> View The Street Art Gallery </h1>
 
   <ul class="medium-block-grid-3">
     <% @arts.each do |art| %>
@@ -10,7 +69,6 @@
       </li>
     <% end %>
   </ul>
-  <%= paginate @arts %>
 </body>
 
 <!-- <ul class="medium-block-grid-3">

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root "arts#index"
+  get "home", to: "home#show"
+  root "home#show"
 
   resources :arts do
     resources :reviews, only: [:new, :create, :destroy]
