@@ -17,7 +17,7 @@ feature "user deletes an entry" do
     expect(page).to_not have_link "Delete this entry"
   end
 
-  scenario "authenticated user cnanot delete another user's art entry" do
+  scenario "authenticated user cannot delete another user's art entry" do
     sign_in(user)
     visit art_path(art)
 
