@@ -66,6 +66,11 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem 'poltergeist'
+  gem 'database_cleaner'
+end
+
 group :production do
   gem 'rails_12factor'
 end
