@@ -27,6 +27,8 @@ gem 'devise'
 
 gem 'carrierwave'
 
+gem 'fog'
+
 gem 'valid_attribute'
 
 gem 'foundation-rails'
@@ -56,6 +58,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.2'
   gem 'valid_attribute'
   gem 'shoulda'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -64,6 +67,11 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+group :test do
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :production do

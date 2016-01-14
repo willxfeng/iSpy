@@ -1,8 +1,7 @@
-require 'rails_helper'
-
 describe Review do
   it { should belong_to :art }
   it { should belong_to :user }
+  it { should have_many :votes }
 
   it { should have_valid(:body).when("Sweet mural!!!") }
   it { should_not have_valid(:body).when(nil, "") }
