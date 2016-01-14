@@ -16,30 +16,24 @@ feature "user votes for review" do
   scenario "authenticated user votes for the first time", js: true do
     sign_in(user)
     create_and_view_review(art)
-binding.pry
-    save_and_open_page
+
     expect(page).to have_button("0 Upvotes")
     click_button "0 Upvotes"
 
-    expect_no_page_reload do
-      expect(page).to have_button '1 Upvote'
-      expect(page).to have_button '0 Downvotes'
-    end
+    expect(page).to have_button '1 Upvote'
+    expect(page).to have_button '0 Downvotes'
   end
 
   scenario "authenticated user changes vote", js: true do
     sign_in(user)
     create_and_view_review(art)
-    save_and_open_page
 
     click_button "0 Upvotes"
 
-    expect_no_page_reload do
-      click_button "0 Downvotes"
+    click_button "0 Downvotes"
 
-      expect(page).to have_button '0 Upvotes'
-      expect(page).to have_button '1 Downvote'
-    end
+    expect(page).to have_button '0 Upvotes'
+    expect(page).to have_button '1 Downvote'
   end
 
   scenario "authenticated user removes vote", js: true do
@@ -48,17 +42,14 @@ binding.pry
 
     click_button "0 Upvotes"
 
-    expect_no_page_reload do
       click_button "1 Upvote"
 
-      expect(page).to have_button '0 Upvotes'
-      expect(page).to have_button '0 Downvotes'
-    end
+    expect(page).to have_button '0 Upvotes'
+    expect(page).to have_button '0 Downvotes'
   end
 end
 
 def create_and_view_review(art)
   FactoryGirl.create(:review, art_id: art.id)
-  puts "art id: #{art.id}"
   visit art_path(art)
 end

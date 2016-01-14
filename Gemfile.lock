@@ -71,6 +71,7 @@ GEM
       thor (~> 0.19.1)
       tins (~> 1.6.0)
     cowsay (0.2.0)
+    database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     devise (3.5.3)
       bcrypt (~> 3.0)
@@ -125,15 +126,15 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
     pg (0.18.4)
+    pg_search (1.0.5)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     poltergeist (1.8.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
-    pg_search (1.0.5)
-      activerecord (>= 3.1)
-      activesupport (>= 3.1)
-      arel
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -266,6 +267,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   coveralls
   cowsay
+  database_cleaner
   devise
   factory_girl_rails (~> 4.2)
   foundation-rails
@@ -274,8 +276,8 @@ DEPENDENCIES
   kaminari
   launchy
   pg (~> 0.15)
-  poltergeist
   pg_search
+  poltergeist
   pry-rails
   puma
   rails (= 4.2.5)
