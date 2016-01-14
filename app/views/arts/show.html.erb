@@ -1,9 +1,12 @@
 <h1><%= @art.name %></h1>
 
-<div class="orbit-container">
-  <ul class="show-orbit" data-orbit>
+<div class="small-11 small-centered columns">
+  <div class="picture-container">
+<!-- <div class="orbit-container">
+  <ul class="show-orbit" data-orbit> -->
     <%= render partial: "photo", collection: @photos %>
-  </ul>
+  <!-- </ul> -->
+ </div>
 </div>
 
 <div class="row">
