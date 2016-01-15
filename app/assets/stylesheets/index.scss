@@ -6,7 +6,7 @@ $black: #000000;
 $white: #ffffff;
 
 body {
-  background-image: url("/assets/new_year_background.png");
+  background-image: url("new_year_background.png");
   background-repeat: repeat;
   color: $font-color;
 }
@@ -90,6 +90,11 @@ a {
 
 .pagination {
   text-align: center;
+}
+
+.input.button.round form-button {
+  margin: auto;
+
 }
 
 .footer {
