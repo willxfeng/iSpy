@@ -2,10 +2,11 @@
 @import "index";
 $background-color: #088da5;
 $white: #ffffff;
+$black: #000000;
 
 .art-details {
   background-color: $background-color;
-  box-shadow: 5px 5px 3px black;
+  box-shadow: 5px 5px 3px $black;
   display: block;
   margin: auto;
   margin-bottom: 35px;

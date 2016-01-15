@@ -3,6 +3,7 @@
 $font-color: #088da5;
 $bg-color: #ececea;
 $black: #000000;
+$white: #ffffff;
 
 body {
   background-image: url("/assets/new_year_background.png");
@@ -63,8 +64,8 @@ h2 {
 .label {
   display: block;
   text-align: center;
-  padding: .5rem;
-  background-color: #fff;
+  padding: 0.5rem;
+  background-color: $white;
 }
 
 a {

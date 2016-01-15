@@ -23,11 +23,11 @@
 <div class="art-details">
   <ul>
     <% if @art.artist.present? %>
-    <li>Artist: <%= @art.artist %></li>
+    <li><u>Artist:</u> <%= @art.artist %></li>
     <% end %>
-    <li>Location: <%= @art.location %></li>
-    <li>Category: <%= @art.category %></li>
-    <li>Description: <%= @art.description %></li>
+    <li><u>Location:</u> <%= @art.location %></li>
+    <li><u>Category:</u> <%= @art.category %></li>
+    <li><u>Description:</u> <%= @art.description %></li>
   </ul>
 </div>
 
