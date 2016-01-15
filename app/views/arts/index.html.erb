@@ -5,7 +5,7 @@
       <% if art.photos.first %>
         <%= link_to image_tag(art.photos.first.art_photo), art_path(art), class: 'index-photo' %>
       <% end %>
-      <span class="label"><%= link_to art.name, art_path(art) %></span>
+      <span class="label"><%= link_to "#{art.name}, #{art.artist}", art_path(art) %></span>
     </li>
   <% end %>
 </ul>
