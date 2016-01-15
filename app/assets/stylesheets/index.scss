@@ -33,8 +33,19 @@ p {
  margin: auto;
 }
 
+.index-photo img {
+  max-height: 260px;
+  max-width: 380px;
+}
+
 h2 {
   text-decoration: underline;
+}
+
+.med button round {
+
+  margin: auto;
+
 }
 
 .about {
