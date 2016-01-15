@@ -37,8 +37,11 @@
           <p class="links">
             <%= link_to "Home", root_path %>
             <%= link_to "View All Art", arts_path %>
-            <%= link_to "Sign In", new_user_session_path %>
-            <%= link_to "Add Art", new_art_path %>
+            <% if user_signed_in? %>
+              <%= link_to "Add Art", new_art_path %>
+            <% else %>
+              <%= link_to "Sign In", new_user_session_path %>
+            <% end %>
           </p>
           <!-- <p class="copywrite">Copywrite not copypwrite © 2015</p> -->
         </div>
