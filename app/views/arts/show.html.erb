@@ -74,7 +74,7 @@
 
 <%= paginate @reviews %>
 
-<div class="art_actions">
+<div class="art_actions actions">
   <ul class="art-buttons">
     <% if user_signed_in? %>
       <li><%= link_to "Add New Review", new_art_review_path(@art), class: "small button round form-button"%></li>
