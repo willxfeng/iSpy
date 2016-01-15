@@ -28,7 +28,7 @@
            <% if current_user.profile_photo? %>
             <%= image_tag current_user.profile_photo_url, class: 'nav-img' %>
           <% else %>
-            <%= image_tag '/assets/default_photo.png', class: 'nav-img' %>
+            <%= image_tag 'default_photo.png', class: 'nav-img' %>
           <% end %>
           <%= current_user.full_name %>
         </a>

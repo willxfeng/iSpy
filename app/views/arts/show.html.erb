@@ -62,7 +62,7 @@
         <% if review.user.profile_photo? %>
           <%= image_tag review.user.profile_photo_url, class: 'nav-img review-img' %>
         <% else %>
-          <%= image_tag '/assets/default_photo.png', class: 'nav-img review-img' %>
+          <%= image_tag 'default_photo.png', class: 'nav-img review-img' %>
         <% end %>
         <%= review.user.first_name %> <%= review.user.last_name %>
       </li>
