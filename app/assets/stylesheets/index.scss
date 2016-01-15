@@ -6,7 +6,7 @@ $black: #000000;
 $white: #ffffff;
 
 body {
-  background-image: image-url("new_year_background.jpg");
+  background-image: url('<%= asset_path("new_year_background.jpg") %>');
   background-repeat: repeat;
   color: $font-color;
 }
