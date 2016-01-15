@@ -1,0 +1,14 @@
+@import "foundation_and_overrides";
+@import "index";
+$background-color: #088da5;
+$white: #ffffff;
+
+.search-bar span {
+  display: inline-block;
+}
+
+.search-button {
+  background-color: $white;
+  color: $background-color;
+  font-family: 'Ubuntu', sans-serif;
+}

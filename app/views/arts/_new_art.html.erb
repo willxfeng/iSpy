@@ -1,10 +1,10 @@
 <%= form_for [@art, @photo] do |f| %>
   <div class="upload-image">
-    <%= f.label :art_photo, 'Photo' %>
+    <%= f.label :art_photo, 'Upload a Photo' %>
     <%= f.file_field :art_photo %>
   </div>
 
-  <div class="upload-image">
+  <div class="upload-image caption">
     <%= f.label :caption, 'Caption' %>
     <%= f.text_area :caption %>
   </div>

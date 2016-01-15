@@ -1,18 +1,26 @@
+<h1>New Review for <%= @art.name %> </h1>
 
-<%= form_for [@art, @review] do |f| %>
-  <div class="field">
-    <%= f.label :body, "body" %>
-    <%= f.text_field :body %>
+<div class="row">
+  <div class="small-6 small-centered columns border">
+    <%= form_for [@art, @review] do |f| %>
+      <div class="field">
+        <%= f.label :rating, "Rating"%>
+        <%= f.text_field :rating %>
+      </div>
+
+      <div class="field">
+        <%= f.label :body, "Comments" %>
+        <%= f.text_field :body %>
+      </div>
+      <div class="actions ">
+        <%= f.submit class: "button round form-button" %>
+      </div>
+    <% end %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :rating, "rating"%>
-    <%= f.text_field :rating %>
+<div class="row">
+  <div class="small-6 small-centered columns back-link">
+    <%= link_to "Back", art_path(@art) %>
   </div>
-  <div class="actions">
-    <%= f.submit "Add" %>
-  </div>
-<% end %>
-
-
-<%= link_to "Back", arts_path %>
+</div>
