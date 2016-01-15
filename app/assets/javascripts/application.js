@@ -18,5 +18,8 @@
 $(function(){ $(document).foundation(); });
 
 $(document).ready(function(){
-  $('.picture-container').slick();
+  $('.picture-container').slick({
+    autoplay: true,
+    autoplaySpeed: 2000
+  });
 });
