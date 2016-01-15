@@ -5,6 +5,7 @@
     <td>Name</td>
     <td>Email</td>
     <td>Role</td>
+    <td>Action</td>
     <td></td>
   </tr>
   <% @users.each do |user| %>
@@ -17,6 +18,19 @@
         admin_user_path(user),
         method: :delete,
         id: "delete_#{user.id}" %>
+    </td>
+    <td>
+      <% unless current_user == user %>
+        <% if user.role == 'admin' %>
+          <%= button_to "Remove Admin Privilege",
+            admin_user_path(user),
+            method: :put %>
+        <% else %>
+          <%= button_to "Make Admin",
+            admin_user_path(user),
+            method: :put %>
+        <% end %>
+      <% end %>
     </td>
   </tr>
   <% end %>
