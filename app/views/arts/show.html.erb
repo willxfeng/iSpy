@@ -58,7 +58,7 @@
       <%= link_to 'Sign in to upvote or downvote this review!', new_user_session_path %>
     <% end %>
     <ul class="review-content">
-      <li><strong>Review by:</strong> <%= review.user.first_name %> <%= review.user.last_name %> </li>
+      <li><%= image_tag review.user.profile_photo_url, class: 'nav-img review-img' %><%= review.user.first_name %> <%= review.user.last_name %> </li>
       <li><strong>Rating:</strong> <%= review.rating %></li>
       <li><strong>Comments:</strong> <%= review.body %></li>
     </ul>
