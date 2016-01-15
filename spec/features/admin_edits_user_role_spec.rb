@@ -1,7 +1,7 @@
 feature 'admin edits user fole' do
   scenario 'admin makes a member admin, then back to member' do
     admin = FactoryGirl.create(:user, role: 'admin')
-    user = FactoryGirl.create(:user)
+    FactoryGirl.create(:user)
     sign_in(admin)
     click_link 'All Users'
 
